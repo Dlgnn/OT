@@ -54,7 +54,7 @@ tailwind.config = {
     backdrop-filter: blur(16px);
   }
   
-  /* ЗӨӨЛӨН ШИЛЖИХ (SMOOTH ANIMATION) CSS */
+  /* SMOOTH ANIMATION CSS */
   .tab-pane {
     display: none;
     opacity: 0;
@@ -198,293 +198,341 @@ tailwind.config = {
 
     </div>
 
-  <!-- ==================== TAB 2: АЖИЛТАНД (ТООЦООЛУУРТАЙ ХЭСЭГ) ==================== -->
-    <div id="tab-for-employees" class="tab-pane active show">
-      <section class="py-12 max-w-5xl mx-auto px-6 space-y-12">
-        <div class="text-center space-y-3 max-w-2xl mx-auto">
-          <span class="px-4 py-1.5 rounded-full bg-omniPurple/10 border border-omniPurple/30 text-omniYellow font-bold text-xs uppercase tracking-wider">
-            Ажилтнуудад зориулав
-          </span>
-          <h2 class="text-3xl sm:text-4xl font-black text-white">Цалингийн урьдчилгаагаа одоо тооцоол</h2>
-          <p class="text-slate-400 text-xs sm:text-sm">
-            Үндсэн цалин болон ажилласан хоногоо оруулж, НДШ суутгалын дараах гарт олгох боломжит урьдчилгаагаа хараарай.
+  <!-- ==================== TAB 2: АЖИЛТАНД (УРИА, ШААРДЛАГА, 4 АЛХАМ БОЛОН ТООЦООЛУУР) ==================== -->
+  <div id="tab-for-employees" class="tab-pane">
+    <section class="py-12 max-w-5xl mx-auto px-6 space-y-16">
+      
+      <!-- HERO & CALL TO ACTION (УРИА ХЭСЭГ) -->
+      <div class="text-center space-y-4 max-w-3xl mx-auto">
+        <span class="px-4 py-1.5 rounded-full bg-omniPurple/10 border border-omniPurple/30 text-omniYellow font-bold text-xs uppercase tracking-wider">
+          💡 Санхүүгийн Эрх Чөлөө
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+          Ажилласан бол <span class="text-transparent bg-clip-text bg-gradient-to-r from-omniYellow to-amber-400">Цалингаа Шууд Ав!</span>
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Сарын эцэс хүртэл хүлээж санхүүгийн стресст орохоо боль. Та хэзээ ажиллана, тэр өдрөө л цалингаа авах бүрэн эрхтэй.
+        </p>
+      </div>
+
+      <!-- 4 STEPS FOR EMPLOYEES (4 АЛХАМ ЧИГЛҮҮЛЭГ) -->
+      <div class="space-y-6">
+        <div class="text-center">
+          <h3 class="text-xl font-extrabold text-white">Урьдчилгаа авах 4 хялбар алхам</h3>
+          <p class="text-slate-400 text-xs mt-1">Хэдхэн хоромд л таны дансанд мөнгө орно</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Step 1 -->
+          <div class="bg-cardBg border border-slate-800 p-5 rounded-2xl space-y-2 relative">
+            <div class="w-8 h-8 rounded-lg bg-omniYellow/10 text-omniYellow font-black text-xs flex items-center justify-center">01</div>
+            <h4 class="font-bold text-white text-sm">Апп татах</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">App Store эсвэл Google Play-ээс OmniFlow апп-ыг татаж авна.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="bg-cardBg border border-slate-800 p-5 rounded-2xl space-y-2 relative">
+            <div class="w-8 h-8 rounded-lg bg-omniYellow/10 text-omniYellow font-black text-xs flex items-center justify-center">02</div>
+            <h4 class="font-bold text-white text-sm">Бүртгүүлэх</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Байгууллагад бүртгэлтэй гар утасны дугаараараа нэвтэрнэ.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="bg-cardBg border border-slate-800 p-5 rounded-2xl space-y-2 relative">
+            <div class="w-8 h-8 rounded-lg bg-omniYellow/10 text-omniYellow font-black text-xs flex items-center justify-center">03</div>
+            <h4 class="font-bold text-white text-sm">Дүн сонгох</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Ажилласан хоногт тохирох авахаар хүссэн дүнгээ тохируулна.</p>
+          </div>
+          <!-- Step 4 -->
+          <div class="bg-cardBg border border-slate-800 p-5 rounded-2xl space-y-2 relative">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-black text-xs flex items-center justify-center">04</div>
+            <h4 class="font-bold text-white text-sm">Дансандаа авах</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Баталгаажуулснаар шилжүүлэг таны дансанд шууд орно.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- REQUIREMENTS SECTION (ТАВИГДАХ ШААРДЛАГА) -->
+      <div class="bg-cardBg border border-purple-500/30 p-6 sm:p-8 rounded-2xl space-y-4">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-check text-omniYellow"></i>
+          Үйлчилгээ ашиглахад тавигдах шаардлага
+        </h3>
+        <div class="grid sm:grid-cols-3 gap-4 text-xs text-slate-300">
+          <div class="flex items-start gap-2.5">
+            <span class="text-omniPurple text-base">•</span>
+            <span>Манай партнер байгууллагад үндсэн ажилтнаар ажилладаг байх</span>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-omniPurple text-base">•</span>
+            <span>Цагийн бартаат системд ирц болон ажилласан хоног тэмдэглэгдсэн байх</span>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-omniPurple text-base">•</span>
+            <span>Өөрийн нэр дээрх банкны данстай байх</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALCULATOR CARD WITH NDSH DEDUCTION -->
+      <div class="bg-cardBg border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 max-w-3xl mx-auto">
+        <div class="text-center space-y-2">
+          <h3 class="text-2xl font-black text-white">Урьдчилгаа тооцоолуур</h3>
+          <p class="text-slate-400 text-xs">Боломжит дүнгээ одоо тооцоолж үзээрэй</p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Salary Slider -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <label class="font-bold text-slate-300">Үндсэн сарын цалин:</label>
+              <span id="salaryVal" class="font-black text-omniYellow text-sm">2,000,000 ₮</span>
+            </div>
+            <input id="monthlySalary" type="range" min="800000" max="10000000" step="100000" value="2000000" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-omniYellow">
+            <div class="flex justify-between text-[10px] text-slate-500">
+              <span>800,000 ₮</span>
+              <span>10,000,000 ₮</span>
+            </div>
+          </div>
+
+          <!-- Days Slider -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <label class="font-bold text-slate-300">Ажилласан хоног:</label>
+              <span id="daysVal" class="font-black text-omniYellow text-sm">10 өдөр</span>
+            </div>
+            <input id="workedDays" type="range" min="1" max="15" step="1" value="10" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-omniYellow">
+            <div class="flex justify-between text-[10px] text-slate-500">
+              <span>1 өдөр</span>
+              <span>15 өдөр</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEDUCTION BREAKDOWN -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 bg-darkBg/80 rounded-2xl border border-slate-800/80 text-xs">
+          <div>
+            <p class="text-[10px] text-slate-400">НДШ суутгал (11.5%):</p>
+            <p id="ndshVal" class="font-bold text-rose-400 mt-0.5">- 230,000 ₮</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-slate-400">ХХАТ суутгал (10%):</p>
+            <p id="hhatVal" class="font-bold text-rose-400 mt-0.5">- 161,000 ₮</p>
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <p class="text-[10px] text-slate-400">Гарт олгох цэвэр цалин:</p>
+            <p id="netSalaryVal" class="font-bold text-emerald-400 mt-0.5">1,609,000 ₮</p>
+          </div>
+        </div>
+
+        <!-- RESULT BOX -->
+        <div class="bg-gradient-to-r from-omniPurple/20 via-purple-900/30 to-omniPurple/20 border border-omniPurple/40 rounded-2xl p-6 text-center space-y-2">
+          <p class="text-xs text-slate-300 uppercase tracking-wider font-bold">Авах боломжит урьдчилгаа дүн</p>
+          <div id="availableSalary" class="text-3xl sm:text-4xl font-black text-omniYellow drop-shadow-md">
+            536,333 ₮
+          </div>
+          <p id="calcNote" class="text-[11px] text-slate-400 pt-1">
+            НДШ ба татвар суутгагдсан цэвэр цалинг ажилласан хоногт харгалзуулан бодов.
           </p>
         </div>
 
-        <!-- CALCULATOR CARD WITH NDSH DEDUCTION -->
-        <div class="bg-cardBg border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 max-w-3xl mx-auto">
-          <div class="space-y-6">
-            <!-- Salary Slider -->
-            <div class="space-y-2">
-              <div class="flex justify-between items-center text-xs">
-                <label class="font-bold text-slate-300">Үндсэн сарын цалин:</label>
-                <span id="salaryVal" class="font-black text-omniYellow text-sm">2,000,000 ₮</span>
-              </div>
-              <input id="monthlySalary" type="range" min="800000" max="10000000" step="100000" value="2000000" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-omniYellow">
-              <div class="flex justify-between text-[10px] text-slate-500">
-                <span>800,000 ₮</span>
-                <span>10,000,000 ₮</span>
-              </div>
-            </div>
+        <div class="text-center pt-2">
+          <button onclick="scrollToDownload()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-omniYellow to-amber-500 text-slate-950 font-black text-xs hover:shadow-glow-yellow transition duration-300">
+            Цалингаа одоо авах
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
 
-            <!-- Days Slider -->
-            <div class="space-y-2">
-              <div class="flex justify-between items-center text-xs">
-                <label class="font-bold text-slate-300">Ажилласан хоног:</label>
-                <span id="daysVal" class="font-black text-omniYellow text-sm">10 өдөр</span>
-              </div>
-              <input id="workedDays" type="range" min="1" max="15" step="1" value="10" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-omniYellow">
-              <div class="flex justify-between text-[10px] text-slate-500">
-                <span>1 өдөр</span>
-                <span>15 өдөр</span>
-              </div>
-            </div>
-          </div>
+  <!-- ==================== TAB 3: БАЙГУУЛЛАГАД ==================== -->
+  <div id="tab-for-companies" class="tab-pane">
+    <section class="py-12 max-w-6xl mx-auto px-6 space-y-16">
+      
+      <!-- HERO -->
+      <div class="text-center space-y-3 max-w-3xl mx-auto">
+        <span class="px-4 py-1.5 rounded-full bg-omniPurple/10 border border-omniPurple/30 text-omniYellow font-bold text-xs uppercase tracking-wider">
+          B2B Хамтын ажиллагаа
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+          Байгууллагын санхүүгийн экосистемийг шинэ шатанд гаргаарай
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          Ажилтнуудынхаа сэтгэл ханамж, идэвхийг дээшлүүлж, санхүүгийн стрессгүй бүтээмжтэй орчныг хамтдаа бүтээцгээе.
+        </p>
+      </div>
 
-          <!-- DEDUCTION BREAKDOWN -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 bg-darkBg/80 rounded-2xl border border-slate-800/80 text-xs">
-            <div>
-              <p class="text-[10px] text-slate-400">НДШ суутгал (11.5%):</p>
-              <p id="ndshVal" class="font-bold text-rose-400 mt-0.5">- 230,000 ₮</p>
-            </div>
-            <div>
-              <p class="text-[10px] text-slate-400">ХХАТ суутгал (10%):</p>
-              <p id="hhatVal" class="font-bold text-rose-400 mt-0.5">- 157,000 ₮</p>
-            </div>
-            <div class="col-span-2 sm:col-span-1">
-              <p class="text-[10px] text-slate-400">Гарт олгох цэвэр цалин:</p>
-              <p id="netSalaryVal" class="font-bold text-emerald-400 mt-0.5">1,613,000 ₮</p>
-            </div>
-          </div>
+      <!-- WHY OMNIFLOW? -->
+      <div class="space-y-6">
+        <div class="text-center">
+          <h3 class="text-xl font-extrabold text-white">Яагаад OmniFlow гэж?</h3>
+          <p class="text-slate-400 text-xs mt-1">Байгууллага болон ажилтнуудад олгох давуу талууд</p>
+        </div>
 
-          <!-- RESULT BOX -->
-          <div class="bg-gradient-to-r from-omniPurple/20 via-purple-900/30 to-omniPurple/20 border border-omniPurple/40 rounded-2xl p-6 text-center space-y-2">
-            <p class="text-xs text-slate-300 uppercase tracking-wider font-bold">Авах боломжит урьдчилгаа дүн</p>
-            <div id="availableSalary" class="text-3xl sm:text-4xl font-black text-omniYellow drop-shadow-md">
-              537,667 ₮
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-3 hover:border-omniPurple/50 transition">
+            <div class="w-12 h-12 bg-omniPurple/10 rounded-xl flex items-center justify-center text-omniPurple text-xl">
+              <i class="fa-solid fa-users"></i>
             </div>
-            <p id="calcNote" class="text-[11px] text-slate-400 pt-1">
-              НДШ ба Тавар суутгагдсан цэвэр цалинг ажилласан хоногт харгалзуулан бодов.
+            <h4 class="font-bold text-white text-base">Ажилтны сэтгэл ханамж ба Тогтворжилт</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Сарын сүүлээр ирэх санхүүгийн дарамтыг бууруулснаар ажилтны ажлаас гарах сонирхлыг бууруулж, байгууллагад итгэх итгэлийг нэмэгдүүлнэ.
             </p>
           </div>
 
-          <div class="text-center pt-2">
-            <button onclick="scrollToDownload()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-omniYellow to-amber-500 text-slate-950 font-black text-xs hover:shadow-glow-yellow transition duration-300">
-              Цалингаа одоо авах
-            </button>
+          <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-3 hover:border-omniPurple/50 transition">
+            <div class="w-12 h-12 bg-omniYellow/10 rounded-xl flex items-center justify-center text-omniYellow text-xl">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h4 class="font-bold text-white text-base">Бүтээмжийн өсөлт</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Санхүүгийн хүндрэлээс үүдэлтэй стресс багассанаар ажилтнуудын фокус, ажлын гүйцэтгэл ба бүтээмж шууд дээшилнэ.
+            </p>
+          </div>
+
+          <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-3 hover:border-omniPurple/50 transition">
+            <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 text-xl">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h4 class="font-bold text-white text-base">Нийт санхүүгийн ачаалал 0₮</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Компанийн санхүүгээс нэмэлт зардал гарагдахгүй. Системийг автоматаар нэгтгэн, байгууллагад ямар нэг эрсдэл үүсгэхгүй.
+            </p>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
 
-    <!-- ==================== TAB 3: БАЙГУУЛЛАГАД ==================== -->
-    <div id="tab-for-companies" class="tab-pane">
-      
-      <section class="py-12 max-w-6xl mx-auto px-6 space-y-16">
-        
-        
-        <!-- HERO -->
-        <div class="text-center space-y-3 max-w-3xl mx-auto">
-          <span class="px-4 py-1.5 rounded-full bg-omniPurple/10 border border-omniPurple/30 text-omniYellow font-bold text-xs uppercase tracking-wider">
-            B2B Хамтын ажиллагаа
-          </span>
-          <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
-            Байгууллагын санхүүгийн экосистемийг шинэ шатанд гаргаарай
-          </h2>
-          <p class="text-slate-400 text-xs sm:text-sm">
-            Ажилтнуудынхаа сэтгэл ханамж, идэвхийг дээшлүүлж, санхүүгийн стрессгүй бүтээмжтэй орчныг хамтдаа бүтээцгээе.
-          </p>
+      <!-- 4 STEPS COOPERATION -->
+      <div class="space-y-8 pt-6">
+        <div class="text-center">
+          <h3 class="text-2xl font-black text-white">4 алхамтай хамтын ажиллагаа</h3>
+          <p class="text-slate-400 text-xs mt-1">Системд холбогдож ашиглаж эхлэх дижитал уРСГАЛ</p>
         </div>
 
-        <!-- WHY OMNIFLOW? -->
-        <div class="space-y-6">
-          <div class="text-center">
-            <h3 class="text-xl font-extrabold text-white">Яагаад OmniFlow гэж?</h3>
-            <p class="text-slate-400 text-xs mt-1">Байгууллага болон ажилтнуудад олгох давуу талууд</p>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-3 hover:border-omniPurple/50 transition">
-              <div class="w-12 h-12 bg-omniPurple/10 rounded-xl flex items-center justify-center text-omniPurple text-xl">
-                <i class="fa-solid fa-users"></i>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+          <!-- STEP 1 -->
+          <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
+                01
               </div>
-              <h4 class="font-bold text-white text-base">Ажилтны сэтгэл ханамж ба Тогтворжилт</h4>
-              <p class="text-slate-400 text-xs leading-relaxed">
-                Сарын сүүлээр ирэх санхүүгийн дарамтыг бууруулснаар ажилтны ажлаас гарах сонирхлыг бууруулж, байгууллагад итгэх итгэлийг нэмэгдүүлнэ.
-              </p>
+              <i class="fa-solid fa-file-signature text-slate-600 group-hover:text-omniPurple transition text-lg"></i>
             </div>
-
-            <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-3 hover:border-omniPurple/50 transition">
-              <div class="w-12 h-12 bg-omniYellow/10 rounded-xl flex items-center justify-center text-omniYellow text-xl">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
-              <h4 class="font-bold text-white text-base">Бүтээмжийн өсөлт</h4>
-              <p class="text-slate-400 text-xs leading-relaxed">
-                Санхүүгийн хүндрэлээс үүдэлтэй стресс багассанаар ажилтнуудын фокус, ажлын гүйцэтгэл ба бүтээмж шууд дээшилнэ.
-              </p>
-            </div>
-
-            <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-3 hover:border-omniPurple/50 transition">
-              <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 text-xl">
-                <i class="fa-solid fa-laptop-code"></i>
-              </div>
-              <h4 class="font-bold text-white text-base">Нийт санхүүгийн ачаалал 0₮</h4>
-              <p class="text-slate-400 text-xs leading-relaxed">
-                Компанийн санхүүгээс нэмэлт зардал гарагдахгүй. Системийг автоматаар нэгтгэн, байгууллагад ямар нэг эрсдэл үүсгэхгүй.
-              </p>
+            <h4 class="font-extrabold text-white text-sm">Хүсэлт хүлээн авах</h4>
+            <p class="text-slate-400 text-xs mt-2 leading-relaxed">Байгууллагын үндсэн мэдээллээ маягтаар илгээгээрэй.</p>
+            <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-omniPurple/60">
+              <i class="fa-solid fa-chevron-right text-xs"></i>
             </div>
           </div>
-        </div>
 
-        <!-- 4 STEPS COOPERATION (NEW CONNECTED FLOW DESIGN) -->
-        <div class="space-y-8 pt-6">
-          <div class="text-center">
-            <h3 class="text-2xl font-black text-white">4 алхамтай хамтын ажиллагаа</h3>
-            <p class="text-slate-400 text-xs mt-1">Системд холбогдож ашиглаж эхлэх дижитал урсгал</p>
+          <!-- STEP 2 -->
+          <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
+                02
+              </div>
+              <i class="fa-solid fa-handshake text-slate-600 group-hover:text-omniPurple transition text-lg"></i>
+            </div>
+            <h4 class="font-extrabold text-white text-sm">Гэрээ байгуулах</h4>
+            <p class="text-slate-400 text-xs mt-2 leading-relaxed">Ажилтнуудад олгох боломж болон нөхцөлүүдийг тохирно.</p>
+            <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-omniPurple/60">
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </div>
           </div>
 
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
-            
-            <!-- STEP 1 -->
-            <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
-                  01
-                </div>
-                <i class="fa-solid fa-file-signature text-slate-600 group-hover:text-omniPurple transition text-lg"></i>
+          <!-- STEP 3 -->
+          <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
+                03
               </div>
-              <h4 class="font-extrabold text-white text-sm">Хүсэлт хүлээн авах</h4>
-              <p class="text-slate-400 text-xs mt-2 leading-relaxed">Байгууллагын үндсэн мэдээллээ маягтаар илгээнэ.</p>
-              
-              <!-- Connection arrow for desktop -->
-              <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-omniPurple/60">
-                <i class="fa-solid fa-chevron-right text-xs"></i>
-              </div>
+              <i class="fa-solid fa-network-wired text-slate-600 group-hover:text-omniPurple transition text-lg"></i>
             </div>
-
-            <!-- STEP 2 -->
-            <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
-                  02
-                </div>
-                <i class="fa-solid fa-handshake text-slate-600 group-hover:text-omniPurple transition text-lg"></i>
-              </div>
-              <h4 class="font-extrabold text-white text-sm">Гэрээ байгуулах</h4>
-              <p class="text-slate-400 text-xs mt-2 leading-relaxed">Ажилтнуудад олгох боломж болон нөхцөлүүдийг тохирно.</p>
-              
-              <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-omniPurple/60">
-                <i class="fa-solid fa-chevron-right text-xs"></i>
-              </div>
+            <h4 class="font-extrabold text-white text-sm">Систем холболт</h4>
+            <p class="text-slate-400 text-xs mt-2 leading-relaxed">Цалингийн систем эсвэл HR системтэй аюулгүй холбоно.</p>
+            <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-omniPurple/60">
+              <i class="fa-solid fa-chevron-right text-xs"></i>
             </div>
+          </div>
 
-            <!-- STEP 3 -->
-            <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
-                  03
-                </div>
-                <i class="fa-solid fa-network-wired text-slate-600 group-hover:text-omniPurple transition text-lg"></i>
+          <!-- STEP 4 -->
+          <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-black text-sm flex items-center justify-center shadow-lg">
+                04
               </div>
-              <h4 class="font-extrabold text-white text-sm">Систем холболт</h4>
-              <p class="text-slate-400 text-xs mt-2 leading-relaxed">Цалингийн систем эсвэл HR системтэй аюулгүй холбоно.</p>
-              
-              <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-omniPurple/60">
-                <i class="fa-solid fa-chevron-right text-xs"></i>
-              </div>
+              <i class="fa-solid fa-rocket text-slate-600 group-hover:text-emerald-400 transition text-lg"></i>
             </div>
-
-            <!-- STEP 4 -->
-            <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-black text-sm flex items-center justify-center shadow-lg">
-                  04
-                </div>
-                <i class="fa-solid fa-rocket text-slate-600 group-hover:text-emerald-400 transition text-lg"></i>
-              </div>
-              <h4 class="font-extrabold text-white text-sm">Ашиглаж эхлэх</h4>
-              <p class="text-slate-400 text-xs mt-2 leading-relaxed">Ажилтнууд апп-аар шууд урьдчилгаагаа авна.</p>
-            </div>
-
+            <h4 class="font-extrabold text-white text-sm">Ашиглаж эхлэх</h4>
+            <p class="text-slate-400 text-xs mt-2 leading-relaxed">Ажилтнууд апп-аар шууд урьдчилгаагаа авна.</p>
           </div>
         </div>
+      </div>
 
-        <!-- REQUIREMENTS (БАЙГУУЛЛАГАД ТАВИГДАХ ШААРДЛАГА) -->
-        <div class="bg-slate-900/90 border border-slate-800 p-6 sm:p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-3 border-b border-slate-800 pb-4">
-            <div class="w-9 h-9 rounded-xl bg-omniYellow/10 border border-omniYellow/30 flex items-center justify-center text-omniYellow">
-              <i class="fa-solid fa-building-circle-check"></i>
+      <!-- CONTACT FORM -->
+      <div class="bg-cardBg border border-purple-500/30 rounded-[32px] p-6 sm:p-10 shadow-glow-purple">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-5 relative h-full min-h-[360px] rounded-2xl overflow-hidden border border-slate-700/80 group">
+            <img src="https://cdn.cosmos.so/e18b067d-acd4-4170-9076-95ac80bc1958?format=webp" alt="Хамтран ажиллах хүсэлт" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/40 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 space-y-1">
+              <span class="text-[11px] font-bold text-omniYellow uppercase tracking-wider">B2B Хамтын ажиллагаа</span>
+              <h3 class="text-lg font-extrabold text-white">Байгууллагынхаа сэтгэл ханамжийг нэмэгдүүл</h3>
             </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-5">
             <div>
-              <h3 class="text-base font-extrabold text-white">Байгууллагад тавигдах шаардлага</h3>
-              <p class="text-slate-400 text-[11px]">Хамтран ажиллах байгууллагын үндсэн стандарт</p>
+              <h2 class="text-2xl font-black text-white">Хамтран ажиллах хүсэлт</h2>
+              <p class="text-slate-400 text-xs mt-1">Та байгууллагынхаа мэдээллийг оруулж, хүсэлтээ илгээгээрэй.</p>
             </div>
-          </div>
 
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="flex items-start space-x-3 bg-darkBg p-4 rounded-xl border border-slate-800/80">
-              <i class="fa-solid fa-circle-check text-emerald-400 text-sm mt-0.5"></i>
-              <span class="text-xs text-slate-300">Монгол улсын хуулийн дагуу албан ёсны бүртгэлтэй, идэвхтэй үйл ажиллагаа явуулж буй аж ахуйн нэгж байх</span>
-            </div>
-            <div class="flex items-start space-x-3 bg-darkBg p-4 rounded-xl border border-slate-800/80">
-              <i class="fa-solid fa-circle-check text-emerald-400 text-sm mt-0.5"></i>
-              <span class="text-xs text-slate-300">Нийт 10 болон түүнээс дээш тооны үндсэн гэрээт ажилтантай байх</span>
-            </div>
-            <div class="flex items-start space-x-3 bg-darkBg p-4 rounded-xl border border-slate-800/80">
-              <i class="fa-solid fa-circle-check text-emerald-400 text-sm mt-0.5"></i>
-              <span class="text-xs text-slate-300">Ажилтнуудын сарын цалинг тогтмол хугацаанд, дансаар олгодог байх</span>
-            </div>
-            <div class="flex items-start space-x-3 bg-darkBg p-4 rounded-xl border border-slate-800/80">
-              <i class="fa-solid fa-circle-check text-emerald-400 text-sm mt-0.5"></i>
-              <span class="text-xs text-slate-300">Хөдөлмөрийн болон цалингийн мэдээллийн ил тод, нээлттэй байдлыг хангах</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTACT FORM -->
-        <div class="bg-cardBg border border-purple-500/30 rounded-[32px] p-6 sm:p-10 shadow-glow-purple">
-          <div class="grid lg:grid-cols-12 gap-8 items-center">
-            
-            <div class="lg:col-span-5 relative h-full min-h-[360px] rounded-2xl overflow-hidden border border-slate-700/80 group">
-              <img src="https://cdn.cosmos.so/e18b067d-acd4-4170-9076-95ac80bc1958?format=webp" alt="Хамтран ажиллах хүсэлт" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-              <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/40 to-transparent"></div>
-              <div class="absolute bottom-6 left-6 right-6 space-y-1">
-                <span class="text-[11px] font-bold text-omniYellow uppercase tracking-wider">B2B Хамтын ажиллагаа</span>
-                <h3 class="text-lg font-extrabold text-white">Байгууллагынхаа сэтгэл ханамжийг нэмэгдүүл</h3>
+            <form class="space-y-3.5" onsubmit="event.preventDefault(); alert('Хамтран ажиллах хүсэлтийг амжилттай хүлээн авлаа!');">
+              <div class="grid sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Компанийн Нэр *</label>
+                  <input type="text" required placeholder="Байгууллагын нэр" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Утас *</label>
+                  <input type="tel" required placeholder="Утасны дугаар" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
+                </div>
               </div>
-            </div>
 
-            <div class="lg:col-span-7 space-y-5">
+              <div class="grid sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Имэйл хаяг *</label>
+                  <input type="email" required placeholder="name@company.mn" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Байгууллагын цагийн систем *</label>
+                  <select required class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-slate-300 focus:border-omniPurple outline-none transition cursor-pointer">
+                    <option value="" disabled selected>Системээ сонгоно уу</option>
+                    <option value="able">Able HR</option>
+                    <option value="greenhr">Green HR</option>
+                    <option value="zangia">Zangia HR</option>
+                    <option value="fingerprint">Хурууны хээ / Картны төхөөрөмж</option>
+                    <option value="excel">Excel / Гар аргаар</option>
+                    <option value="other">Бусад систем</option>
+                  </select>
+                </div>
+              </div>
+
               <div>
-                <h2 class="text-2xl font-black text-white">Хамтран ажиллах хүсэлт</h2>
-                <p class="text-slate-400 text-xs mt-1">Та манай бүтээгдэхүүн үйлчилгээтэй холбоотой хүсэлтээ илгээгээрэй.</p>
+                <label class="block text-[11px] font-bold text-slate-400 mb-1">Байгууллагын товч танилцуулга *</label>
+                <textarea rows="3" required placeholder="Үйл ажиллагааны чиглэл, ажилтны тоо гэх мэт товч мэдээлэл..." class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition resize-none"></textarea>
               </div>
 
-              <form class="space-y-3.5" onsubmit="event.preventDefault(); alert('Амжилттай илгээгдлээ!');">
-                <div class="grid sm:grid-cols-2 gap-3.5">
-                  <input type="text" required placeholder="Нэр *" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
-                  <input type="tel" required placeholder="Утас *" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
-                </div>
-
-                <div class="grid sm:grid-cols-2 gap-3.5">
-                  <input type="email" required placeholder="Имэйл хаяг *" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
-                  <input type="text" required placeholder="Компанийн нэр *" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
-                </div>
-
-                <textarea rows="3" required placeholder="Хүсэлтийн агуулга..." class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition resize-none"></textarea>
-
-                <button type="submit" class="px-7 py-3 rounded-xl bg-gradient-to-r from-omniPurple to-omniPurpleDark text-white font-bold text-xs transition duration-200 shadow-md flex items-center gap-2 hover:opacity-90">
-                  <span>Илгээх</span>
-                  <i class="fa-solid fa-paper-plane text-[10px]"></i>
-                </button>
-              </form>
-            </div>
-
+              <button type="submit" class="px-7 py-3 rounded-xl bg-gradient-to-r from-omniPurple to-omniPurpleDark text-white font-bold text-xs transition duration-200 shadow-md flex items-center gap-2 hover:opacity-90">
+                <span>Хүсэлт илгээх</span>
+                <i class="fa-solid fa-paper-plane text-[10px]"></i>
+              </button>
+            </form>
           </div>
-        </div>
-      </section>
 
-    </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
 </main>
 
@@ -540,6 +588,7 @@ tailwind.config = {
       </div>
     </div>
   </div>
+</section>
   
 <section class="py-12 max-w-4xl mx-auto px-6">
   <div class="bg-slate-900/80 border border-slate-800/80 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -553,7 +602,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- Санал хүсэлтийн жижиг Поп-ап (Modal) -->
+<!-- Санал хүсэлтийн Modal -->
 <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
   <div class="bg-cardBg border border-slate-700 w-full max-w-md rounded-2xl p-6 space-y-4 relative shadow-2xl">
     <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
@@ -572,62 +621,60 @@ tailwind.config = {
     </form>
   </div>
 </div>
- <!-- AI CHATBOT SYSTEM -->
-  <div class="fixed bottom-6 right-6 z-50">
-    <button id="chatbot-toggle-btn" onclick="toggleChatbot()" aria-expanded="false" aria-controls="chatbot-window" aria-label="AI туслахтай чатлах" class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-amber-400 text-slate-950 font-black flex items-center justify-center shadow-lg hover:scale-110 transition duration-300">
-      <i class="fa-solid fa-comments text-xl text-slate-950"></i>
-    </button>
 
-    <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-[340px] sm:w-[380px] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[480px]">
-      <div class="bg-slate-950 p-4 border-b border-slate-800 flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-          <div class="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center font-black text-slate-950 text-xs">
-            AI
-          </div>
-          <div>
-            <h4 class="text-xs font-bold text-white">OmniBot Туслах</h4>
-            <span class="text-[10px] text-emerald-400 flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Идэвхтэй
-            </span>
-          </div>
-        </div>
-        <button onclick="toggleChatbot()" class="text-slate-400 hover:text-white text-sm px-2">✕</button>
-      </div>
+<!-- AI CHATBOT SYSTEM -->
+<div class="fixed bottom-6 right-6 z-50">
+  <button id="chatbot-toggle-btn" onclick="toggleChatbot()" aria-expanded="false" aria-controls="chatbot-window" aria-label="AI туслахтай чатлах" class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-amber-400 text-slate-950 font-black flex items-center justify-center shadow-lg hover:scale-110 transition duration-300">
+    <i class="fa-solid fa-comments text-xl text-slate-950"></i>
+  </button>
 
-      <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs" role="log" aria-live="polite">
-        <div class="bg-slate-800/80 p-3 rounded-2xl rounded-tl-none text-slate-200 max-w-[85%] leading-relaxed">
-          Сайн байна уу! 👋 Би OmniFlow-ийн AI туслах байна. Танд хэрхэн туслах вэ?
+  <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-[340px] sm:w-[380px] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[480px]">
+    <div class="bg-slate-950 p-4 border-b border-slate-800 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center font-black text-slate-950 text-xs">
+          AI
         </div>
-        
-        <div class="space-y-1.5 pt-2">
-          <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Их асуудаг асуултууд:</p>
-          <button onclick="sendQuickMessage('Яаж цалингаа урьдчилж авах вэ?')" class="w-full text-left p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-purple-500 text-[11px] text-slate-300 transition">
-            ❓ Яаж цалингаа урьдчилж авах вэ?
-          </button>
-          <button onclick="sendQuickMessage('Шимтгэл ба хүү хэд вэ?')" class="w-full text-left p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-purple-500 text-[11px] text-slate-300 transition">
-            💰 Шимтгэл ба хүү хэд вэ?
-          </button>
-          <button onclick="sendQuickMessage('Манай байгууллага холбогдох боломжтой юу?')" class="w-full text-left p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-purple-500 text-[11px] text-slate-300 transition">
-            🏢 Байгууллага холбох тухай
-          </button>
+        <div>
+          <h4 class="text-xs font-bold text-white">OmniBot Туслах</h4>
+          <span class="text-[10px] text-emerald-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Идэвхтэй
+          </span>
         </div>
       </div>
-
-      <form onsubmit="handleUserChat(event)" class="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2">
-        <input id="chat-input" type="text" placeholder="Асуултаа бичнэ үү..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-purple-500">
-        <button type="submit" class="p-2 bg-amber-400 text-slate-950 rounded-xl font-bold hover:bg-amber-300 transition">
-          <i class="fa-solid fa-paper-plane text-xs"></i>
-        </button>
-      </form>
+      <button onclick="toggleChatbot()" class="text-slate-400 hover:text-white text-sm px-2">✕</button>
     </div>
-  </div>
 
-  <!--FOOTER WITH ALL LINKS & SOCIAL MEDIA -->
+    <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs" role="log" aria-live="polite">
+      <div class="bg-slate-800/80 p-3 rounded-2xl rounded-tl-none text-slate-200 max-w-[85%] leading-relaxed">
+        Сайн байна уу! 👋 Би OmniFlow-ийн AI туслах байна. Танд хэрхэн туслах вэ?
+      </div>
+      
+      <div class="space-y-1.5 pt-2">
+        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Их асуудаг асуултууд:</p>
+        <button onclick="sendQuickMessage('Яаж цалингаа урьдчилж авах вэ?')" class="w-full text-left p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-purple-500 text-[11px] text-slate-300 transition">
+          ❓ Яаж цалингаа урьдчилж авах вэ?
+        </button>
+        <button onclick="sendQuickMessage('Шимтгэл ба хүү хэд вэ?')" class="w-full text-left p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-purple-500 text-[11px] text-slate-300 transition">
+          💰 Шимтгэл ба хүү хэд вэ?
+        </button>
+        <button onclick="sendQuickMessage('Манай байгууллага холбогдох боломжтой юу?')" class="w-full text-left p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-purple-500 text-[11px] text-slate-300 transition">
+          🏢 Байгууллага холбох тухай
+        </button>
+      </div>
+    </div>
+
+    <form onsubmit="handleUserChat(event)" class="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2">
+      <input id="chat-input" type="text" placeholder="Асуултаа бичнэ үү..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-purple-500">
+      <button type="submit" class="p-2 bg-amber-400 text-slate-950 rounded-xl font-bold hover:bg-amber-300 transition">
+        <i class="fa-solid fa-paper-plane text-xs"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer class="bg-[#070A0F] text-xs text-slate-400 border-t border-slate-800/80 pt-10 pb-6">
-  
   <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800/60">
-    
-    <!-- 1. Компанийн мэдээлэл -->
     <div class="space-y-3">
       <h4 class="font-black text-white text-base">Омни Флов ХХК</h4>
       <p class="text-slate-400 text-xs leading-relaxed">
@@ -635,7 +682,6 @@ tailwind.config = {
       </p>
     </div>
 
-    <!-- 2. Үндсэн Цэс -->
     <div class="space-y-3">
       <h5 class="font-bold text-white text-xs uppercase tracking-wider">Цэс</h5>
       <ul class="space-y-2 text-slate-400">
@@ -645,7 +691,6 @@ tailwind.config = {
       </ul>
     </div>
 
-    <!-- 3. Мэдээлэл & Хууль эрх зүй -->
     <div class="space-y-3">
       <h5 class="font-bold text-white text-xs uppercase tracking-wider">Мэдээлэл</h5>
       <ul class="space-y-2 text-slate-400">
@@ -656,7 +701,6 @@ tailwind.config = {
       </ul>
     </div>
 
-    <!-- 4. Холбоо барих & Сошиал холбоосууд -->
     <div class="space-y-3">
       <h5 class="font-bold text-white text-xs uppercase tracking-wider">Холбоо барих</h5>
       <div class="space-y-2">
@@ -670,7 +714,6 @@ tailwind.config = {
         </a>
       </div>
 
-      <!-- Сошиал сувгууд -->
       <div class="pt-2">
         <p class="text-[10px] text-slate-500 uppercase font-bold mb-2">Биднийг дагаарай</p>
         <div class="flex items-center space-x-2.5 text-base">
@@ -689,14 +732,11 @@ tailwind.config = {
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- ДООД ХЭСЭГ: COPYRIGHT & ЭРХ ХАМГААЛАЛТ -->
   <div class="max-w-6xl mx-auto px-6 pt-6 flex flex-col sm:flex-row items-center justify-between text-slate-500 text-[11px]">
     <p>© Омни Флов ХХК, 2026 он. Бүх эрх хуулиар хамгаалагдсан.</p>
   </div>
-
 </footer>
 
 <!-- JAVASCRIPT LOGIC -->
@@ -736,7 +776,7 @@ tailwind.config = {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // CALCULATOR WITH SOCIAL INSURANCE (NDSH) & TAX DEDUCTIONS
+  // CALCULATOR LOGIC
   const salaryInput = document.getElementById('monthlySalary');
   const daysInput = document.getElementById('workedDays');
   const salaryVal = document.getElementById('salaryVal');
@@ -756,19 +796,14 @@ tailwind.config = {
     salaryVal.textContent = grossSalary.toLocaleString() + ' ₮';
     daysVal.textContent = workedDays + ' өдөр';
 
-    // 1. Нийгмийн даатгалын шимтгэл (11.5%)
     const ndsh = grossSalary * 0.115;
-    
-    // 2. Хүн амын орлогын албан татвар (10%)
     const taxableIncome = grossSalary - ndsh;
     const hhat = taxableIncome * 0.10;
 
-    // 3. Гарт олгох цэвэр цалин
     const netSalary = grossSalary - ndsh - hhat;
 
-    // 4. Боломжит урьдчилгаа limit (Сард 15 ажлын өдөр гэж үзвэл)
     const dailyNetWage = netSalary / 15;
-    const maxAvailable = dailyNetWage * workedDays * 0.50; // 50% хүртэл урьдчилгаа
+    const maxAvailable = dailyNetWage * workedDays * 0.50;
 
     ndshVal.textContent = '- ' + Math.round(ndsh).toLocaleString() + ' ₮';
     hhatVal.textContent = '- ' + Math.round(hhat).toLocaleString() + ' ₮';
@@ -779,7 +814,59 @@ tailwind.config = {
   if (salaryInput && daysInput) {
     salaryInput.addEventListener('input', updateCalc);
     daysInput.addEventListener('input', updateCalc);
-    updateCalc(); // Initial run
+    updateCalc();
+  }
+
+  // AI CHATBOT LOGIC
+  function toggleChatbot() {
+    const win = document.getElementById('chatbot-window');
+    win.classList.toggle('hidden');
+  }
+
+  function appendChatMessage(text, isUser = false) {
+    const chatContainer = document.getElementById('chat-messages');
+    const msgDiv = document.createElement('div');
+    if (isUser) {
+      msgDiv.className = "bg-purple-600 text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[85%] leading-relaxed";
+    } else {
+      msgDiv.className = "bg-slate-800/80 p-3 rounded-2xl rounded-tl-none text-slate-200 max-w-[85%] leading-relaxed";
+    }
+    msgDiv.textContent = text;
+    chatContainer.appendChild(msgDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+
+  function getBotResponse(input) {
+    const lower = input.toLowerCase();
+    if (lower.includes('яаж') || lower.includes('хэрхэн') || lower.includes('урьдчилгаа')) {
+      return "Та OmniFlow аппликейшнийг татаж аваад өөрийн бүртгэлээ үүсгэснээр ажилласан хоногийнхоо цалинг шууд авах боломжтой.";
+    } else if (lower.includes('шимтгэл') || lower.includes('хүү')) {
+      return "OmniFlow нь ямар нэгэн банкны хүүгүй бөгөөд зөвхөн гүйлгээ тутамд бага хэмжээний үйлчилгээний шимтгэлтэй.";
+    } else if (lower.includes('байгууллага') || lower.includes('холбох')) {
+      return "Манай 'Байгууллагад' цэсээр зочилж хамтран ажиллах хүсэлтийн формоо ирүүлнэ үү. Бид тантай шууд холбогдох болно.";
+    }
+    return "Таны асуултад баярлалаа! Дэлгэрэнгүй мэдээллийг 7000-7000 дугаар эсвэл info@omniflow.mn-ээс авна уу.";
+  }
+
+  function sendQuickMessage(text) {
+    appendChatMessage(text, true);
+    setTimeout(() => {
+      appendChatMessage(getBotResponse(text), false);
+    }, 500);
+  }
+
+  function handleUserChat(e) {
+    e.preventDefault();
+    const inputEl = document.getElementById('chat-input');
+    const val = inputEl.value.trim();
+    if (!val) return;
+    
+    appendChatMessage(val, true);
+    inputEl.value = '';
+    
+    setTimeout(() => {
+      appendChatMessage(getBotResponse(val), false);
+    }, 600);
   }
 </script>
 
