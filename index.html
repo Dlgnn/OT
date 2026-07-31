@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OmniFlow - Цалингаа урьдчилан авах уян хатан шийдэл</title>
+<title>UyanWay — Цалингаа урьдчилан авах уян хатан шийдэл</title>
+<meta name="description" content="UyanWay — ажилласан хоногийнхоо цалинг сарын эцэс хүртэл хүлээлгүйгээр, хүссэн үедээ, хүүгүй, шимтгэлгүй авах Earned Wage Access үйлчилгээ.">
+<meta name="theme-color" content="#0B0F17">
+
+<!-- Open Graph -->
+<meta property="og:title" content="UyanWay — Цалин хүлээх шаардлагагүй боллоо">
+<meta property="og:description" content="Ажилласан хоногийнхоо цалинг хүссэн өдөртөө шууд авах боломжтой. Зээл биш, хүүгүй, компанид зардалгүй.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="mn_MN">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238B5CF6'/%3E%3Cstop offset='1' stop-color='%23FACC15'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect rx='22' width='100' height='100' fill='url(%23g)'/%3E%3Ctext x='50' y='66' font-size='44' font-weight='900' text-anchor='middle' fill='%230B0F17' font-family='Arial'%3EOF%3C/text%3E%3C/svg%3E">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -41,6 +51,14 @@ tailwind.config = {
   html {
     scroll-behavior: smooth;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
   body { 
     font-family: 'Inter', sans-serif;
     background-color: #0B0F17;
@@ -53,8 +71,13 @@ tailwind.config = {
     background: rgba(19, 26, 41, 0.75);
     backdrop-filter: blur(16px);
   }
-  
-  /* SMOOTH ANIMATION CSS */
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid #FACC15;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
   .tab-pane {
     display: none;
     opacity: 0;
@@ -68,34 +91,59 @@ tailwind.config = {
     opacity: 1;
     transform: translateY(0);
   }
+
+  input[type="range"].fill-slider {
+    background: linear-gradient(to right, #8B5CF6 0%, #FACC15 var(--fill, 50%), #1E293B var(--fill, 50%), #1E293B 100%);
+  }
+
+  .faq-toggle[aria-expanded="true"] .faq-chevron {
+    transform: rotate(180deg);
+  }
+  .faq-chevron {
+    transition: transform 0.25s ease;
+  }
+  .faq-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  .faq-panel.open {
+    grid-template-rows: 1fr;
+  }
+  .faq-panel > div {
+    overflow: hidden;
+  }
 </style>
 </head>
 <body class="bg-darkBg text-slate-100 antialiased selection:bg-omniYellow selection:text-slate-950 flex flex-col min-h-screen">
 
+
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-omniYellow focus:text-slate-950 focus:px-4 focus:py-2 focus:rounded-xl focus:font-bold">Үндсэн контент руу шилжих</a>
+
 <!-- 1. HEADER -->
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-darkBg/80 border-b border-slate-800/80">
-  <div class="max-w-7xl mx-auto sm:px-8 h-20 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto sm:px-8 h-20 flex items-center justify-between px-4">
     <a href="javascript:void(0)" onclick="switchTab('hero')" class="flex items-center space-x-3 group">
       <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-omniPurple via-purple-700 to-omniYellow flex items-center justify-center font-black text-slate-950 text-xl shadow-lg shadow-purple-500/20 group-hover:scale-105 transition duration-300">
-        OF
+        UW
       </div>
-     <span class="text-2xl font-black tracking-tight text-white">Omni<span class="text-transparent bg-clip-text bg-gradient-to-r from-omniYellow to-amber-400">Flow</span></span>
+     <span class="text-2xl font-black tracking-tight text-white">Uyan<span class="text-transparent bg-clip-text bg-gradient-to-r from-omniYellow to-amber-400">Way</span></span>
     </a>
 
     <!-- Таб солих цэс -->
-    <nav class="flex items-center space-x-2 sm:space-x-6 text-xs sm:text-sm font-semibold bg-slate-900/80 p-1.5 rounded-full border border-slate-800">
-      <button id="nav-hero" onclick="switchTab('hero')" class="nav-btn px-4 py-2 rounded-full text-omniYellow bg-purple-950/60 border border-purple-500/30 transition duration-300">Нүүр</button>
-      <button id="nav-for-employees" onclick="switchTab('for-employees')" class="nav-btn px-4 py-2 rounded-full text-slate-400 hover:text-white transition duration-300">Ажилтанд</button>
-      <button id="nav-for-companies" onclick="switchTab('for-companies')" class="nav-btn px-4 py-2 rounded-full text-slate-400 hover:text-white transition duration-300">Байгууллагад</button>
+    <nav class="flex items-center space-x-2 sm:space-x-6 text-xs sm:text-sm font-semibold bg-slate-900/80 p-1.5 rounded-full border border-slate-800" role="tablist" aria-label="Үндсэн цэс">
+      <button id="nav-hero" onclick="switchTab('hero')" role="tab" aria-selected="true" aria-controls="tab-hero" class="nav-btn px-4 py-2 rounded-full text-omniYellow bg-purple-950/60 border border-purple-500/30 transition duration-300">Нүүр</button>
+      <button id="nav-for-employees" onclick="switchTab('for-employees')" role="tab" aria-selected="false" aria-controls="tab-for-employees" class="nav-btn px-4 py-2 rounded-full text-slate-400 hover:text-white transition duration-300">Ажилтанд</button>
+      <button id="nav-for-companies" onclick="switchTab('for-companies')" role="tab" aria-selected="false" aria-controls="tab-for-companies" class="nav-btn px-4 py-2 rounded-full text-slate-400 hover:text-white transition duration-300">Байгууллагад</button>
     </nav>
   </div>
 </header>
 
 <!-- MAIN WRAPPER -->
-<main class="flex-grow relative w-full">
+<main id="main-content" class="flex-grow relative w-full">
   
     <!-- ==================== TAB 1: НҮҮР (HERO) ==================== -->
-    <div id="tab-hero" class="tab-pane active show">
+    <div id="tab-hero" class="tab-pane active show" role="tabpanel" aria-labelledby="nav-hero">
       
       <section class="relative overflow-hidden pt-12 pb-20 max-w-5xl mx-auto px-6 text-center">
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-purple-600/15 to-omniYellow/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -133,6 +181,7 @@ tailwind.config = {
                 muted 
                 loop 
                 playsinline
+                aria-hidden="true"
                 class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-1000 ease-out">
               </video>
               <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/10 to-transparent"></div>
@@ -147,11 +196,11 @@ tailwind.config = {
                 </div>
 
                 <div class="flex items-center gap-3 w-full sm:w-auto">
-                  <a href="#download-app-sec" onclick="scrollToDownload()" class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bold text-xs transition flex items-center justify-center gap-2">
+                  <a href="#download-app-sec" onclick="scrollToDownload(event)" class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bold text-xs transition flex items-center justify-center gap-2">
                     <i class="fa-brands fa-apple text-base"></i>
                     <span>App Store</span>
                   </a>
-                  <a href="#download-app-sec" onclick="scrollToDownload()" class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bold text-xs transition flex items-center justify-center gap-2">
+                  <a href="#download-app-sec" onclick="scrollToDownload(event)" class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bold text-xs transition flex items-center justify-center gap-2">
                     <i class="fa-brands fa-google-play text-emerald-400 text-sm"></i>
                     <span>Google Play</span>
                   </a>
@@ -198,11 +247,11 @@ tailwind.config = {
 
     </div>
 
-  <!-- ==================== TAB 2: АЖИЛТАНД (УРИА, ШААРДЛАГА, 4 АЛХАМ БОЛОН ТООЦООЛУУР) ==================== -->
-  <div id="tab-for-employees" class="tab-pane">
+  <!-- ==================== TAB 2: АЖИЛТАНД ==================== -->
+  <div id="tab-for-employees" class="tab-pane" role="tabpanel" aria-labelledby="nav-for-employees">
     <section class="py-12 max-w-5xl mx-auto px-6 space-y-16">
       
-      <!-- HERO & CALL TO ACTION (УРИА ХЭСЭГ) -->
+      <!-- HERO & CALL TO ACTION -->
       <div class="text-center space-y-4 max-w-3xl mx-auto">
         <span class="px-4 py-1.5 rounded-full bg-omniPurple/10 border border-omniPurple/30 text-omniYellow font-bold text-xs uppercase tracking-wider">
           💡 Санхүүгийн Эрх Чөлөө
@@ -215,7 +264,7 @@ tailwind.config = {
         </p>
       </div>
 
-      <!-- 4 STEPS FOR EMPLOYEES (4 АЛХАМ ЧИГЛҮҮЛЭГ) -->
+      <!-- 4 STEPS FOR EMPLOYEES -->
       <div class="space-y-6">
         <div class="text-center">
           <h3 class="text-xl font-extrabold text-white">Урьдчилгаа авах 4 хялбар алхам</h3>
@@ -223,25 +272,21 @@ tailwind.config = {
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Step 1 -->
           <div class="bg-cardBg border border-slate-800 p-5 rounded-2xl space-y-2 relative">
             <div class="w-8 h-8 rounded-lg bg-omniYellow/10 text-omniYellow font-black text-xs flex items-center justify-center">01</div>
             <h4 class="font-bold text-white text-sm">Апп татах</h4>
-            <p class="text-slate-400 text-xs leading-relaxed">App Store эсвэл Google Play-ээс OmniFlow апп-ыг татаж авна.</p>
+            <p class="text-slate-400 text-xs leading-relaxed">App Store эсвэл Google Play-ээс UyanWay апп-ыг татаж авна.</p>
           </div>
-          <!-- Step 2 -->
           <div class="bg-cardBg border border-slate-800 p-5 rounded-2xl space-y-2 relative">
             <div class="w-8 h-8 rounded-lg bg-omniYellow/10 text-omniYellow font-black text-xs flex items-center justify-center">02</div>
             <h4 class="font-bold text-white text-sm">Бүртгүүлэх</h4>
             <p class="text-slate-400 text-xs leading-relaxed">Байгууллагад бүртгэлтэй гар утасны дугаараараа нэвтэрнэ.</p>
           </div>
-          <!-- Step 3 -->
           <div class="bg-cardBg border border-slate-800 p-5 rounded-2xl space-y-2 relative">
             <div class="w-8 h-8 rounded-lg bg-omniYellow/10 text-omniYellow font-black text-xs flex items-center justify-center">03</div>
             <h4 class="font-bold text-white text-sm">Дүн сонгох</h4>
             <p class="text-slate-400 text-xs leading-relaxed">Ажилласан хоногт тохирох авахаар хүссэн дүнгээ тохируулна.</p>
           </div>
-          <!-- Step 4 -->
           <div class="bg-cardBg border border-slate-800 p-5 rounded-2xl space-y-2 relative">
             <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-black text-xs flex items-center justify-center">04</div>
             <h4 class="font-bold text-white text-sm">Дансандаа авах</h4>
@@ -250,7 +295,7 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- REQUIREMENTS SECTION (ТАВИГДАХ ШААРДЛАГА) -->
+      <!-- REQUIREMENTS SECTION -->
       <div class="bg-cardBg border border-purple-500/30 p-6 sm:p-8 rounded-2xl space-y-4">
         <h3 class="text-lg font-bold text-white flex items-center gap-2">
           <i class="fa-solid fa-circle-check text-omniYellow"></i>
@@ -272,7 +317,7 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- CALCULATOR CARD WITH NDSH DEDUCTION -->
+      <!-- CALCULATOR CARD -->
       <div class="bg-cardBg border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 max-w-3xl mx-auto">
         <div class="text-center space-y-2">
           <h3 class="text-2xl font-black text-white">Урьдчилгаа тооцоолуур</h3>
@@ -283,73 +328,171 @@ tailwind.config = {
           <!-- Salary Slider -->
           <div class="space-y-2">
             <div class="flex justify-between items-center text-xs">
-              <label class="font-bold text-slate-300">Үндсэн сарын цалин:</label>
+              <label for="monthlySalary" class="font-bold text-slate-300">Үндсэн сарын цалин:</label>
               <span id="salaryVal" class="font-black text-omniYellow text-sm">2,000,000 ₮</span>
             </div>
-            <input id="monthlySalary" type="range" min="800000" max="10000000" step="100000" value="2000000" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-omniYellow">
+            <input id="monthlySalary" type="range" min="800000" max="10000000" step="100000" value="2000000" class="fill-slider w-full h-2 rounded-lg appearance-none cursor-pointer accent-omniYellow">
             <div class="flex justify-between text-[10px] text-slate-500">
               <span>800,000 ₮</span>
               <span>10,000,000 ₮</span>
             </div>
           </div>
 
- <!-- Days Slider -->
-   <div class="space-y-2">
-   <div class="flex justify-between items-center text-xs">
-     <label class="font-bold text-slate-300">Ажилласан хоног:</label>
-    <span id="daysVal" class="font-black text-omniYellow text-sm">10 өдөр</span>
-  </div>
-    <input id="workedDays" type="range" min="1" max="15" step="1" value="10" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-omniYellow">
-  <div class="flex justify-between text-[10px] text-slate-500 font-medium">
-    <span>1 өдөр</span>
-    <span>15 өдөр (50%)</span>
-  </div>
-</div>
-
-<!-- Info Badge -->
-<div class="flex items-start gap-2 text-[11px] leading-tight text-amber-400/90 bg-amber-500/10 border border-amber-500/20 px-3 py-2 rounded-xl mt-3">
-  <i class="fa-solid fa-circle-info text-xs mt-0.5 shrink-0"></i>
-  <span>Санхүүгийн эрсдэлээс хамгаалах үүднээс сард ажилласан хоногийн дээд тал нь 50% (15 өдөр)-д дүйцэх урьдчилгаа авах боломжтой.</span>
-</div>
-
-        <!-- DEDUCTION BREAKDOWN -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 bg-darkBg/80 rounded-2xl border border-slate-800/80 text-xs">
-          <div>
-            <p class="text-[10px] text-slate-400">НДШ суутгал (11.5%):</p>
-            <p id="ndshVal" class="font-bold text-rose-400 mt-0.5">- 230,000 ₮</p>
+          <!-- Days Slider -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <label for="workedDays" class="font-bold text-slate-300 flex items-center gap-1.5">
+                <span>Урьдчилгаанд тооцох хоног:</span>
+                <!-- Interactive Tooltip: tap-to-toggle so it works on mobile, hover still works on desktop -->
+                <span class="relative inline-flex items-center">
+                  <button type="button"
+                    id="daysInfoBtn"
+                    aria-expanded="false"
+                    aria-controls="daysTooltip"
+                    onclick="toggleTooltip(event)"
+                    class="peer text-[10px] bg-slate-800 text-slate-400 hover:text-omniYellow rounded-full w-4 h-4 inline-flex items-center justify-center border border-slate-700 transition">i</button>
+                  <span id="daysTooltip" role="tooltip"
+                    class="hidden peer-hover:block absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 p-3 bg-slate-900 text-[11px] text-slate-200 rounded-xl shadow-2xl border border-slate-700 z-30 leading-normal text-left normal-case font-normal">
+                    <strong class="text-omniYellow">Яагаад 50%-иар хязгаарладаг вэ?</strong><br/>
+                    Таныг санхүүгийн эрсдэлээс хамгаалах үүднээс одоогоор сарын цугларсан цалингийн дээд тал нь 50% хүртэлх хэсгийг олгодог. Энэ нь сарын эцэст дараагийн цалингаа авах хүртэл тогтвортой байхад тусална.
+                  </span>
+                </span>
+              </label>
+              <span id="daysVal" class="font-black text-omniYellow text-sm">10 өдөр</span>
+            </div>
+            <input id="workedDays" type="range" min="1" max="15" step="1" value="10" class="fill-slider w-full h-2 rounded-lg appearance-none cursor-pointer accent-omniYellow">
+            <div class="flex justify-between text-[10px] text-slate-500 font-medium">
+              <span>1 өдөр</span>
+              <span class="text-amber-400 font-semibold">Дээд хязгаар: Сарын хагас (50%)</span>
+            </div>
           </div>
-          <div>
-            <p class="text-[10px] text-slate-400">ХХАТ суутгал (10%):</p>
-            <p id="hhatVal" class="font-bold text-rose-400 mt-0.5">- 161,000 ₮</p>
-          </div>
-          <div class="col-span-2 sm:col-span-1">
-            <p class="text-[10px] text-slate-400">Гарт олгох цэвэр цалин:</p>
-            <p id="netSalaryVal" class="font-bold text-emerald-400 mt-0.5">1,609,000 ₮</p>
-          </div>
-        </div>
 
-        <!-- RESULT BOX -->
-        <div class="bg-gradient-to-r from-omniPurple/20 via-purple-900/30 to-omniPurple/20 border border-omniPurple/40 rounded-2xl p-6 text-center space-y-2">
-          <p class="text-xs text-slate-300 uppercase tracking-wider font-bold">Авах боломжит урьдчилгаа дүн</p>
-          <div id="availableSalary" class="text-3xl sm:text-4xl font-black text-omniYellow drop-shadow-md">
-            536,333 ₮
+          <!-- Info Badge -->
+          <div class="flex items-start gap-2 text-[11px] leading-tight text-amber-400/90 bg-amber-500/10 border border-amber-500/20 px-3.5 py-2.5 rounded-xl mt-3">
+            <i class="fa-solid fa-shield-halved text-xs mt-0.5 shrink-0 text-amber-400"></i>
+            <span>Энэхүү 50%-ийн хязгаарлалт нь таныг санхүүгийн эрсдэл болон өрийн дарамтаас хамгаалж, сарын эцэст үлдэгдэл цалинтай байх боломжийг хангадаг.</span>
           </div>
-          <p id="calcNote" class="text-[11px] text-slate-400 pt-1">
-            НДШ ба татвар суутгагдсан цэвэр цалинг ажилласан хоногт харгалзуулан бодов.
-          </p>
-        </div>
 
-        <div class="text-center pt-2">
-          <button onclick="scrollToDownload()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-omniYellow to-amber-500 text-slate-950 font-black text-xs hover:shadow-glow-yellow transition duration-300">
-            Цалингаа одоо авах
-          </button>
+          <!-- DEDUCTION BREAKDOWN -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 bg-darkBg/80 rounded-2xl border border-slate-800/80 text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400">НДШ суутгал (11.5%):</p>
+              <p id="ndshVal" class="font-bold text-rose-400 mt-0.5">- 230,000 ₮</p>
+            </div>
+            <div>
+              <p class="text-[10px] text-slate-400">ХХАТ суутгал (10%):</p>
+              <p id="hhatVal" class="font-bold text-rose-400 mt-0.5">- 177,000 ₮</p>
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <p class="text-[10px] text-slate-400">Гарт олгох цэвэр цалин:</p>
+              <p id="netSalaryVal" class="font-bold text-emerald-400 mt-0.5">1,593,000 ₮</p>
+            </div>
+          </div>
+
+          <!-- RESULT BOX & REMAINING SALARY PREVIEW -->
+          <div class="bg-gradient-to-r from-omniPurple/20 via-purple-900/30 to-omniPurple/20 border border-omniPurple/40 rounded-2xl p-6 text-center space-y-3">
+            <div class="flex justify-between items-center text-xs text-slate-400 border-b border-purple-500/20 pb-2">
+              <span>Үйлчилгээний шимтгэл:</span>
+              <span class="text-emerald-400 font-bold">0 ₮ (Төлбөргүй)</span>
+            </div>
+
+            <p class="text-xs text-slate-300 uppercase tracking-wider font-bold pt-1">Авах боломжит урьдчилгаа дүн</p>
+            <div id="availableSalary" class="text-3xl sm:text-4xl font-black text-omniYellow drop-shadow-md" aria-live="polite">
+              531,000 ₮
+            </div>
+            
+            <div class="pt-2 border-t border-purple-500/20 flex justify-between items-center text-xs">
+              <span class="text-slate-400">Сарын эцэст авах үлдэгдэл цалин:</span>
+              <span id="remainingSalaryVal" class="text-slate-200 font-bold">1,062,000 ₮</span>
+            </div>
+
+            <p id="calcNote" class="text-[10px] text-slate-400 pt-1">
+              НДШ ба татвар суутгагдсан цэвэр цалинг ажилласан хоногт харгалзуулан бодов. Эцсийн дүн таны байгууллагын баталгаажуулсан ирцээр тодорхойлогдоно.
+            </p>
+          </div>
+
+          <div class="text-center pt-2">
+            <button onclick="scrollToDownload(event)" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-omniYellow to-amber-500 text-slate-950 font-black text-xs hover:shadow-glow-yellow transition duration-300">
+              Цалингаа одоо авах
+            </button>
+          </div>
         </div>
       </div>
+
+      <!-- EMPLOYER INVITATION B2C->B2B CARD -->
+      <div class="max-w-3xl mx-auto p-6 rounded-2xl bg-gradient-to-r from-purple-950/40 via-cardBg to-slate-900 border border-purple-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="space-y-1 text-center md:text-left">
+          <h4 class="text-white font-bold text-sm">Танай ажил олгогч UyanWay-д холбогдоогүй байна уу?</h4>
+          <p class="text-slate-400 text-xs">Байгууллагынхаа HR эсвэл удирдлагадаа хүсэлт илгээж, цалингийн урьдчилгаа авах боломжийг бүрдүүлээрэй.</p>
+        </div>
+        <button onclick="switchTab('for-companies')" class="whitespace-nowrap bg-omniYellow hover:bg-amber-400 text-slate-950 font-black text-xs px-5 py-3 rounded-xl transition-all shadow-lg shadow-amber-400/10 shrink-0">
+          Ажил олгогчид санал явуулах →
+        </button>
+      </div>
+
+      <!-- FAQ ACCORDION -->
+      <div id="faq-section" class="max-w-3xl mx-auto space-y-4 scroll-mt-28">
+        <div class="text-center">
+          <h3 class="text-xl font-extrabold text-white">Түгээмэл асуулт</h3>
+          <p class="text-slate-400 text-xs mt-1">Хамгийн их асуудаг зүйлсийн хариулт</p>
+        </div>
+
+        <div class="space-y-3">
+          <div class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between gap-4 p-4 text-left" aria-expanded="false" aria-controls="faq-1" onclick="toggleFaq(this)">
+              <span class="font-bold text-white text-sm">Энэ зээл мөн үү?</span>
+              <i class="fa-solid fa-chevron-down text-omniYellow text-xs faq-chevron shrink-0"></i>
+            </button>
+            <div id="faq-1" class="faq-panel">
+              <div class="px-4 pb-4 text-xs text-slate-400 leading-relaxed">
+                Үгүй. UyanWay нь зээл олгодоггүй. Та зөвхөн аль хэдийн ажилласан, өөрийн олсон цалингийнхаа нэг хэсгийг эрт авч байгаа юм. Тиймээс хүү тооцогддоггүй бөгөөд өрийн бүртгэлд орохгүй.
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between gap-4 p-4 text-left" aria-expanded="false" aria-controls="faq-2" onclick="toggleFaq(this)">
+              <span class="font-bold text-white text-sm">Миний зээлийн түүх (кредит скор) дээр нөлөөлөх үү?</span>
+              <i class="fa-solid fa-chevron-down text-omniYellow text-xs faq-chevron shrink-0"></i>
+            </button>
+            <div id="faq-2" class="faq-panel">
+              <div class="px-4 pb-4 text-xs text-slate-400 leading-relaxed">
+                Үгүй. UyanWay нь зээлийн байгууллага биш тул Зээлийн мэдээллийн санд мэдээлэл дамжуулдаггүй бөгөөд таны кредит скор дээр ямар ч байдлаар нөлөөлдөггүй.
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between gap-4 p-4 text-left" aria-expanded="false" aria-controls="faq-3" onclick="toggleFaq(this)">
+              <span class="font-bold text-white text-sm">Ажил олгогч маань мэдэх үү?</span>
+              <i class="fa-solid fa-chevron-down text-omniYellow text-xs faq-chevron shrink-0"></i>
+            </button>
+            <div id="faq-3" class="faq-panel">
+              <div class="px-4 pb-4 text-xs text-slate-400 leading-relaxed">
+                Таны ажил олгогч зөвхөн урьдчилгааны нийт дүнг сарын эцсийн цалингийн тооцоонд тусгах зорилгоор системд харна. Дэлгэрэнгүй хэрэглээ, зарцуулалтын мэдээлэл ажил олгогчид харагдахгүй.
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between gap-4 p-4 text-left" aria-expanded="false" aria-controls="faq-4" onclick="toggleFaq(this)">
+              <span class="font-bold text-white text-sm">Сард хэдэн удаа урьдчилгаа авч болох вэ?</span>
+              <i class="fa-solid fa-chevron-down text-omniYellow text-xs faq-chevron shrink-0"></i>
+            </button>
+            <div id="faq-4" class="faq-panel">
+              <div class="px-4 pb-4 text-xs text-slate-400 leading-relaxed">
+                Та сард хэд ч удаа хүсэлт гаргаж болно, гэхдээ нийт авах дүн тухайн сарын ажилласан хоногийн цэвэр цалингийн 50%-иас хэтрэхгүй байх ёстой.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
-  </div>
+  </div>  
 
   <!-- ==================== TAB 3: БАЙГУУЛЛАГАД ==================== -->
-  <div id="tab-for-companies" class="tab-pane">
+  <div id="tab-for-companies" class="tab-pane" role="tabpanel" aria-labelledby="nav-for-companies">
     <section class="py-12 max-w-6xl mx-auto px-6 space-y-16">
       
       <!-- HERO -->
@@ -368,7 +511,7 @@ tailwind.config = {
       <!-- WHY OMNIFLOW? -->
       <div class="space-y-6">
         <div class="text-center">
-          <h3 class="text-xl font-extrabold text-white">Яагаад OmniFlow гэж?</h3>
+          <h3 class="text-xl font-extrabold text-white">Яагаад UyanWay гэж?</h3>
           <p class="text-slate-400 text-xs mt-1">Байгууллага болон ажилтнуудад олгох давуу талууд</p>
         </div>
 
@@ -409,11 +552,10 @@ tailwind.config = {
       <div class="space-y-8 pt-6">
         <div class="text-center">
           <h3 class="text-2xl font-black text-white">4 алхамтай хамтын ажиллагаа</h3>
-          <p class="text-slate-400 text-xs mt-1">Системд холбогдож ашиглаж эхлэх дижитал уРСГАЛ</p>
+          <p class="text-slate-400 text-xs mt-1">Системд холбогдож ашиглаж эхлэх дижитал урсгал</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
-          <!-- STEP 1 -->
           <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
             <div class="flex items-center justify-between mb-4">
               <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
@@ -428,7 +570,6 @@ tailwind.config = {
             </div>
           </div>
 
-          <!-- STEP 2 -->
           <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
             <div class="flex items-center justify-between mb-4">
               <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
@@ -443,7 +584,6 @@ tailwind.config = {
             </div>
           </div>
 
-          <!-- STEP 3 -->
           <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
             <div class="flex items-center justify-between mb-4">
               <div class="w-10 h-10 rounded-xl bg-omniPurple/20 border border-omniPurple/40 text-omniYellow font-black text-sm flex items-center justify-center shadow-lg">
@@ -458,7 +598,6 @@ tailwind.config = {
             </div>
           </div>
 
-          <!-- STEP 4 -->
           <div class="bg-cardBg border border-omniPurple/30 p-6 rounded-2xl relative overflow-hidden group hover:border-omniYellow transition-all duration-300">
             <div class="flex items-center justify-between mb-4">
               <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-black text-sm flex items-center justify-center shadow-lg">
@@ -477,7 +616,7 @@ tailwind.config = {
         <div class="grid lg:grid-cols-12 gap-8 items-center">
           
           <div class="lg:col-span-5 relative h-full min-h-[360px] rounded-2xl overflow-hidden border border-slate-700/80 group">
-            <img src="https://cdn.cosmos.so/e18b067d-acd4-4170-9076-95ac80bc1958?format=webp" alt="Хамтран ажиллах хүсэлт" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <img src="https://cdn.cosmos.so/e18b067d-acd4-4170-9076-95ac80bc1958?format=webp" alt="Уулзалтын өрөөнд суугаа хамтрагч байгууллагын төлөөлөгч" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/40 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6 space-y-1">
               <span class="text-[11px] font-bold text-omniYellow uppercase tracking-wider">B2B Хамтын ажиллагаа</span>
@@ -491,26 +630,26 @@ tailwind.config = {
               <p class="text-slate-400 text-xs mt-1">Та байгууллагынхаа мэдээллийг оруулж, хүсэлтээ илгээгээрэй.</p>
             </div>
 
-            <form class="space-y-3.5" onsubmit="event.preventDefault(); alert('Хамтран ажиллах хүсэлтийг амжилттай хүлээн авлаа!');">
+            <form id="companyForm" class="space-y-3.5" onsubmit="handleCompanyFormSubmit(event)" novalidate>
               <div class="grid sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Компанийн Нэр *</label>
-                  <input type="text" required placeholder="Байгууллагын нэр" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
+                  <label for="companyName" class="block text-[11px] font-bold text-slate-400 mb-1">Компанийн Нэр *</label>
+                  <input id="companyName" name="companyName" type="text" required placeholder="Байгууллагын нэр" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
                 </div>
                 <div>
-                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Утас *</label>
-                  <input type="tel" required placeholder="Утасны дугаар" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
+                  <label for="companyPhone" class="block text-[11px] font-bold text-slate-400 mb-1">Утас *</label>
+                  <input id="companyPhone" name="companyPhone" type="tel" required pattern="[0-9\-\+\s]{8,}" placeholder="Утасны дугаар" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
                 </div>
               </div>
 
               <div class="grid sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Имэйл хаяг *</label>
-                  <input type="email" required placeholder="name@company.mn" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
+                  <label for="companyEmail" class="block text-[11px] font-bold text-slate-400 mb-1">Имэйл хаяг *</label>
+                  <input id="companyEmail" name="companyEmail" type="email" required placeholder="name@company.mn" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition">
                 </div>
                 <div>
-                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Байгууллагын цагийн систем *</label>
-                  <select required class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-slate-300 focus:border-omniPurple outline-none transition cursor-pointer">
+                  <label for="companySystem" class="block text-[11px] font-bold text-slate-400 mb-1">Байгууллагын цагийн систем *</label>
+                  <select id="companySystem" name="companySystem" required class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-slate-300 focus:border-omniPurple outline-none transition cursor-pointer">
                     <option value="" disabled selected>Системээ сонгоно уу</option>
                     <option value="able">Able HR</option>
                     <option value="greenhr">Green HR</option>
@@ -523,8 +662,13 @@ tailwind.config = {
               </div>
 
               <div>
-                <label class="block text-[11px] font-bold text-slate-400 mb-1">Байгууллагын товч танилцуулга *</label>
-                <textarea rows="3" required placeholder="Үйл ажиллагааны чиглэл, ажилтны тоо гэх мэт товч мэдээлэл..." class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition resize-none"></textarea>
+                <label for="companyInfo" class="block text-[11px] font-bold text-slate-400 mb-1">Байгууллагын товч танилцуулга *</label>
+                <textarea id="companyInfo" name="companyInfo" rows="3" required placeholder="Үйл ажиллагааны чиглэл, ажилтны тоо гэх мэт товч мэдээлэл..." class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white focus:border-omniPurple outline-none transition resize-none"></textarea>
+              </div>
+
+              <div id="companyFormError" class="hidden text-[11px] text-rose-400 bg-rose-500/10 border border-rose-500/20 rounded-xl px-3.5 py-2.5"></div>
+              <div id="companyFormSuccess" class="hidden text-[11px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-xl px-3.5 py-2.5">
+                ✅ Хүсэлтийг амжилттай хүлээн авлаа! Манай баг өдрийн дотор тантай холбогдоно.
               </div>
 
               <button type="submit" class="px-7 py-3 rounded-xl bg-gradient-to-r from-omniPurple to-omniPurpleDark text-white font-bold text-xs transition duration-200 shadow-md flex items-center gap-2 hover:opacity-90">
@@ -561,11 +705,11 @@ tailwind.config = {
           </div>
         </div>
 
-        <a href="https://apps.apple.com" target="_blank" class="p-3 bg-white rounded-2xl shadow-lg border border-slate-200 hover:scale-105 transition duration-300">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://apps.apple.com" alt="App Store QR" class="w-32 h-32">
+        <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-2xl shadow-lg border border-slate-200 hover:scale-105 transition duration-300">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://apps.apple.com" alt="App Store QR код" class="w-32 h-32" loading="lazy">
         </a>
 
-        <a href="https://apps.apple.com" target="_blank" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700/80 transition">
+        <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700/80 transition">
           <i class="fa-brands fa-apple text-base"></i>
           <span>Download on the App Store</span>
         </a>
@@ -582,11 +726,11 @@ tailwind.config = {
           </div>
         </div>
 
-        <a href="https://play.google.com" target="_blank" class="p-3 bg-white rounded-2xl shadow-lg border border-slate-200 hover:scale-105 transition duration-300">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://play.google.com" alt="Google Play QR" class="w-32 h-32">
+        <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-2xl shadow-lg border border-slate-200 hover:scale-105 transition duration-300">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://play.google.com" alt="Google Play QR код" class="w-32 h-32" loading="lazy">
         </a>
 
-        <a href="https://play.google.com" target="_blank" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700/80 transition">
+        <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700/80 transition">
           <i class="fa-brands fa-google-play text-emerald-400 text-base"></i>
           <span>GET IT ON Google Play</span>
         </a>
@@ -601,25 +745,28 @@ tailwind.config = {
       <h4 class="font-extrabold text-base text-white">Танд санал хүсэлт эсвэл асуулт байна уу?</h4>
       <p class="text-xs text-slate-400">Биднийг сайжруулахад туслах саналаа үлдээнэ үү.</p>
     </div>
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-xs transition flex-shrink-0">
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden'); document.getElementById('feedbackPhone').focus();" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-xs transition flex-shrink-0">
       💬 Санал хүсэлт илгээх
     </button>
   </div>
 </section>
 
 <!-- Санал хүсэлтийн Modal -->
-<div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+<div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle" onclick="if(event.target === this) this.classList.add('hidden')">
   <div class="bg-cardBg border border-slate-700 w-full max-w-md rounded-2xl p-6 space-y-4 relative shadow-2xl">
-    <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+    <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" aria-label="Хаах" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
     
     <div class="space-y-1">
-      <h3 class="font-black text-lg text-white">Санал хүсэлт</h3>
+      <h3 id="feedbackModalTitle" class="font-black text-lg text-white">Санал хүсэлт</h3>
       <p class="text-xs text-slate-400">Таны санал бидэнд маш чухал.</p>
     </div>
 
-    <form class="space-y-3" onsubmit="event.preventDefault(); alert('Санал хүсэлт хүлээн авлаа!'); document.getElementById('feedbackModal').classList.add('hidden');">
-      <input type="text" placeholder="Утас эсвэл Имэйл" required class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white outline-none focus:border-omniYellow">
+    <form class="space-y-3" onsubmit="event.preventDefault(); this.reset(); document.getElementById('feedbackSuccess').classList.remove('hidden'); setTimeout(() => { document.getElementById('feedbackModal').classList.add('hidden'); document.getElementById('feedbackSuccess').classList.add('hidden'); }, 1500);">
+      <input id="feedbackPhone" type="text" placeholder="Утас эсвэл Имэйл" required class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white outline-none focus:border-omniYellow">
       <textarea rows="3" placeholder="Санал хүсэлтээ бичнэ үү..." required class="w-full px-4 py-3 rounded-xl bg-darkBg border border-slate-700 text-xs text-white outline-none focus:border-omniYellow resize-none"></textarea>
+      <div id="feedbackSuccess" class="hidden text-[11px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-xl px-3.5 py-2.5 text-center">
+        ✅ Санал хүсэлтийг хүлээн авлаа. Баярлалаа!
+      </div>
       <button type="submit" class="w-full py-3 rounded-xl bg-omniYellow text-slate-950 font-black text-xs hover:bg-omniYellowHover transition">
         Илгээх
       </button>
@@ -629,7 +776,7 @@ tailwind.config = {
 
 <!-- AI CHATBOT SYSTEM -->
 <div class="fixed bottom-6 right-6 z-50">
-  <button id="chatbot-toggle-btn" onclick="toggleChatbot()" aria-expanded="false" aria-controls="chatbot-window" aria-label="AI туслахтай чатлах" class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-amber-400 text-slate-950 font-black flex items-center justify-center shadow-lg hover:scale-110 transition duration-300">
+  <button id="chatbot-toggle-btn" onclick="toggleChatbot()" aria-expanded="false" aria-controls="chatbot-window" aria-label="Автомат туслахтай чатлах" class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-amber-400 text-slate-950 font-black flex items-center justify-center shadow-lg hover:scale-110 transition duration-300">
     <i class="fa-solid fa-comments text-xl text-slate-950"></i>
   </button>
 
@@ -637,21 +784,21 @@ tailwind.config = {
     <div class="bg-slate-950 p-4 border-b border-slate-800 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <div class="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center font-black text-slate-950 text-xs">
-          AI
+          UW
         </div>
         <div>
-          <h4 class="text-xs font-bold text-white">OmniBot Туслах</h4>
+          <h4 class="text-xs font-bold text-white">UyanBot · Автомат туслах</h4>
           <span class="text-[10px] text-emerald-400 flex items-center gap-1">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Идэвхтэй
           </span>
         </div>
       </div>
-      <button onclick="toggleChatbot()" class="text-slate-400 hover:text-white text-sm px-2">✕</button>
+      <button onclick="toggleChatbot()" aria-label="Чатыг хаах" class="text-slate-400 hover:text-white text-sm px-2">✕</button>
     </div>
 
     <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs" role="log" aria-live="polite">
       <div class="bg-slate-800/80 p-3 rounded-2xl rounded-tl-none text-slate-200 max-w-[85%] leading-relaxed">
-        Сайн байна уу! 👋 Би OmniFlow-ийн AI туслах байна. Танд хэрхэн туслах вэ?
+        Сайн байна уу! 👋 Би UyanWay-ийн автомат туслах байна. Түгээмэл асуултад шууд хариулж, шаардлагатай бол мэргэжилтэнтэй холбож өгье.
       </div>
       
       <div class="space-y-1.5 pt-2">
@@ -669,8 +816,9 @@ tailwind.config = {
     </div>
 
     <form onsubmit="handleUserChat(event)" class="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2">
+      <label for="chat-input" class="sr-only">Асуултаа бичнэ үү</label>
       <input id="chat-input" type="text" placeholder="Асуултаа бичнэ үү..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-purple-500">
-      <button type="submit" class="p-2 bg-amber-400 text-slate-950 rounded-xl font-bold hover:bg-amber-300 transition">
+      <button type="submit" aria-label="Илгээх" class="p-2 bg-amber-400 text-slate-950 rounded-xl font-bold hover:bg-amber-300 transition">
         <i class="fa-solid fa-paper-plane text-xs"></i>
       </button>
     </form>
@@ -681,9 +829,9 @@ tailwind.config = {
 <footer class="bg-[#070A0F] text-xs text-slate-400 border-t border-slate-800/80 pt-10 pb-6">
   <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800/60">
     <div class="space-y-3">
-      <h4 class="font-black text-white text-base">Омни Флов ХХК</h4>
+      <h4 class="font-black text-white text-base">Уян Вэй ХХК</h4>
       <p class="text-slate-400 text-xs leading-relaxed">
-        Сүхбаатар дүүрэг, 1-р хороо, Омни Цамхаг, #801 өрөө, Улаанбаатар хот
+       Улаанбаатар хот, Хан-Уул дүүрэг, 18-р хороо, Z BUSINESS CENTER, 6 давхар, 603 тоот
       </p>
     </div>
 
@@ -702,7 +850,7 @@ tailwind.config = {
         <li><a href="#" class="hover:text-omniYellow transition-colors duration-200">Бидний тухай</a></li>
         <li><a href="#" class="hover:text-omniYellow transition-colors duration-200">Үйлчилгээний нөхцөл</a></li>
         <li><a href="#" class="hover:text-omniYellow transition-colors duration-200">Нууцлалын бодлого</a></li>
-        <li><a href="#" class="hover:text-omniYellow transition-colors duration-200">Түгээмэл асуултууд (FAQ)</a></li>
+        <li><a href="javascript:void(0)" onclick="goToFaq()" class="hover:text-omniYellow transition-colors duration-200">Түгээмэл асуултууд (FAQ)</a></li>
       </ul>
     </div>
 
@@ -711,11 +859,11 @@ tailwind.config = {
       <div class="space-y-2">
         <a href="tel:70007000" class="flex items-center gap-2 hover:text-omniYellow transition-colors duration-200">
           <i class="fa-solid fa-phone text-omniPurple"></i>
-          <span>7000-7000</span>
+          <span>+7577 6664</span>
         </a>
         <a href="mailto:info@omniflow.mn" class="flex items-center gap-2 hover:text-omniYellow transition-colors duration-200">
           <i class="fa-solid fa-envelope text-omniPurple"></i>
-          <span>info@omniflow.mn</span>
+          <span>info@omnitech.mn</span>
         </a>
       </div>
 
@@ -740,12 +888,13 @@ tailwind.config = {
   </div>
 
   <div class="max-w-6xl mx-auto px-6 pt-6 flex flex-col sm:flex-row items-center justify-between text-slate-500 text-[11px]">
-    <p>© Омни Флов ХХК, 2026 он. Бүх эрх хуулиар хамгаалагдсан.</p>
+    <p>© Уян Вэй ХХК, 2026 он. Бүх эрх хуулиар хамгаалагдсан.</p>
   </div>
 </footer>
 
 <!-- JAVASCRIPT LOGIC -->
 <script>
+  // ===================== TAB SWITCHING =====================
   function switchTab(tabName) {
     const activeTab = document.querySelector('.tab-pane.active');
     const targetTab = document.getElementById('tab-' + tabName);
@@ -754,11 +903,13 @@ tailwind.config = {
 
     document.querySelectorAll('.nav-btn').forEach(btn => {
       btn.className = "nav-btn px-4 py-2 rounded-full text-slate-400 hover:text-white transition duration-300";
+      btn.setAttribute('aria-selected', 'false');
     });
     
     const activeNavBtn = document.getElementById('nav-' + tabName);
-    if(activeNavBtn) {
+    if (activeNavBtn) {
       activeNavBtn.className = "nav-btn px-4 py-2 rounded-full text-omniYellow bg-purple-950/60 border border-purple-500/30 transition duration-300";
+      activeNavBtn.setAttribute('aria-selected', 'true');
     }
 
     if (activeTab) {
@@ -769,19 +920,66 @@ tailwind.config = {
         setTimeout(() => {
           targetTab.classList.add('show');
         }, 50);
-
-      }, 300);
+      }, 400);
+    } else {
+      targetTab.classList.add('active');
+      setTimeout(() => targetTab.classList.add('show'), 50);
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function scrollToDownload() {
+  function scrollToDownload(e) {
+    if (e) e.preventDefault();
     const el = document.getElementById('download-app-sec');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // CALCULATOR LOGIC
+  function goToFaq() {
+    const alreadyOnEmployeesTab = document.getElementById('tab-for-employees')?.classList.contains('active');
+    if (!alreadyOnEmployeesTab) {
+      switchTab('for-employees');
+      setTimeout(() => {
+        document.getElementById('faq-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 550);
+    } else {
+      document.getElementById('faq-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // ===================== TOOLTIP (tap-to-toggle, works on mobile + desktop) =====================
+  function toggleTooltip(e) {
+    e.stopPropagation();
+    const btn = document.getElementById('daysInfoBtn');
+    const tooltip = document.getElementById('daysTooltip');
+    const isOpen = !tooltip.classList.contains('hidden');
+    tooltip.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  }
+  document.addEventListener('click', (e) => {
+    const tooltip = document.getElementById('daysTooltip');
+    const btn = document.getElementById('daysInfoBtn');
+    if (tooltip && !tooltip.classList.contains('hidden') && !tooltip.contains(e.target) && e.target !== btn) {
+      tooltip.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.getElementById('daysTooltip')?.classList.add('hidden');
+      document.getElementById('daysInfoBtn')?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ===================== FAQ ACCORDION =====================
+  function toggleFaq(button) {
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!isOpen));
+    panel.classList.toggle('open', !isOpen);
+  }
+
+  // ===================== CALCULATOR LOGIC =====================
   const salaryInput = document.getElementById('monthlySalary');
   const daysInput = document.getElementById('workedDays');
   const salaryVal = document.getElementById('salaryVal');
@@ -791,12 +989,20 @@ tailwind.config = {
   const hhatVal = document.getElementById('hhatVal');
   const netSalaryVal = document.getElementById('netSalaryVal');
   const availableSalary = document.getElementById('availableSalary');
+  const remainingSalaryVal = document.getElementById('remainingSalaryVal');
+
+  function updateSliderFill(input) {
+    const min = parseFloat(input.min);
+    const max = parseFloat(input.max);
+    const pct = ((parseFloat(input.value) - min) / (max - min)) * 100;
+    input.style.setProperty('--fill', pct + '%');
+  }
 
   function updateCalc() {
     if (!salaryInput || !daysInput) return;
-    
-    const grossSalary = parseInt(salaryInput.value);
-    const workedDays = parseInt(daysInput.value);
+
+    const grossSalary = parseInt(salaryInput.value, 10);
+    const workedDays = parseInt(daysInput.value, 10);
 
     salaryVal.textContent = grossSalary.toLocaleString() + ' ₮';
     daysVal.textContent = workedDays + ' өдөр';
@@ -804,16 +1010,20 @@ tailwind.config = {
     const ndsh = grossSalary * 0.115;
     const taxableIncome = grossSalary - ndsh;
     const hhat = taxableIncome * 0.10;
-
     const netSalary = grossSalary - ndsh - hhat;
 
-    const dailyNetWage = netSalary / 15;
-    const maxAvailable = dailyNetWage * workedDays * 0.50;
+    // 15 өдөр = сарын хагас (50%) хязгаар. workedDays/15 харьцаагаар цэвэр цалингийн 50%-ийг тооцно.
+    const maxAvailable = netSalary * (workedDays / 15) * 0.50;
+    const remainingSalary = netSalary - maxAvailable;
 
     ndshVal.textContent = '- ' + Math.round(ndsh).toLocaleString() + ' ₮';
     hhatVal.textContent = '- ' + Math.round(hhat).toLocaleString() + ' ₮';
     netSalaryVal.textContent = Math.round(netSalary).toLocaleString() + ' ₮';
     availableSalary.textContent = Math.round(maxAvailable).toLocaleString() + ' ₮';
+    remainingSalaryVal.textContent = Math.round(remainingSalary).toLocaleString() + ' ₮';
+
+    updateSliderFill(salaryInput);
+    updateSliderFill(daysInput);
   }
 
   if (salaryInput && daysInput) {
@@ -822,10 +1032,36 @@ tailwind.config = {
     updateCalc();
   }
 
-  // AI CHATBOT LOGIC
+  // ===================== COMPANY FORM (inline feedback instead of alert()) =====================
+  function handleCompanyFormSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const errorBox = document.getElementById('companyFormError');
+    const successBox = document.getElementById('companyFormSuccess');
+
+    errorBox.classList.add('hidden');
+    successBox.classList.add('hidden');
+
+    if (!form.checkValidity()) {
+      errorBox.textContent = '⚠️ Бүх шаардлагатай талбарыг зөв бөглөнө үү.';
+      errorBox.classList.remove('hidden');
+      form.reportValidity();
+      return;
+    }
+
+    // Энд бодит backend/CRM руу мэдээлэл илгээх дуудлага орно (fetch/POST).
+    successBox.classList.remove('hidden');
+    form.reset();
+    successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ===================== AI CHATBOT LOGIC =====================
   function toggleChatbot() {
     const win = document.getElementById('chatbot-window');
+    const btn = document.getElementById('chatbot-toggle-btn');
+    const willShow = win.classList.contains('hidden');
     win.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(willShow));
   }
 
   function appendChatMessage(text, isUser = false) {
@@ -846,11 +1082,11 @@ tailwind.config = {
     if (lower.includes('яаж') || lower.includes('хэрхэн') || lower.includes('урьдчилгаа')) {
       return "Та OmniFlow аппликейшнийг татаж аваад өөрийн бүртгэлээ үүсгэснээр ажилласан хоногийнхоо цалинг шууд авах боломжтой.";
     } else if (lower.includes('шимтгэл') || lower.includes('хүү')) {
-      return "OmniFlow нь ямар нэгэн банкны хүүгүй бөгөөд зөвхөн гүйлгээ тутамд бага хэмжээний үйлчилгээний шимтгэлтэй.";
+      return "OmniFlow нь ямар нэгэн банкны хүүгүй бөгөөд одоогийн байдлаар үйлчилгээний шимтгэлгүй ажиллаж байна.";
     } else if (lower.includes('байгууллага') || lower.includes('холбох')) {
       return "Манай 'Байгууллагад' цэсээр зочилж хамтран ажиллах хүсэлтийн формоо ирүүлнэ үү. Бид тантай шууд холбогдох болно.";
     }
-    return "Таны асуултад баярлалаа! Дэлгэрэнгүй мэдээллийг 7000-7000 дугаар эсвэл info@omniflow.mn-ээс авна уу.";
+    return "Таны асуултад баярлалаа! Дэлгэрэнгүй мэдээллийг +7577 6664 дугаар эсвэл info@omnitech.mn-ээс авна уу.";
   }
 
   function sendQuickMessage(text) {
