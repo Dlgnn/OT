@@ -267,7 +267,7 @@ tailwind.config = {
           </div>
           <div class="flex items-start gap-2.5">
             <span class="text-omniPurple text-base">•</span>
-            <span>Өөрийн нэр дээрх банкны данстай байх</span>
+            <span>Байгууллагад бүртгэлтэй, өөрийн нэр дээрх цалин авдаг банкны данс байх</span>
           </div>
         </div>
       </div>
@@ -293,19 +293,24 @@ tailwind.config = {
             </div>
           </div>
 
-          <!-- Days Slider -->
-          <div class="space-y-2">
-            <div class="flex justify-between items-center text-xs">
-              <label class="font-bold text-slate-300">Ажилласан хоног:</label>
-              <span id="daysVal" class="font-black text-omniYellow text-sm">10 өдөр</span>
-            </div>
-            <input id="workedDays" type="range" min="1" max="15" step="1" value="10" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-omniYellow">
-            <div class="flex justify-between text-[10px] text-slate-500">
-              <span>1 өдөр</span>
-              <span>15 өдөр</span>
-            </div>
-          </div>
-        </div>
+ <!-- Days Slider -->
+   <div class="space-y-2">
+   <div class="flex justify-between items-center text-xs">
+     <label class="font-bold text-slate-300">Ажилласан хоног:</label>
+    <span id="daysVal" class="font-black text-omniYellow text-sm">10 өдөр</span>
+  </div>
+    <input id="workedDays" type="range" min="1" max="15" step="1" value="10" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-omniYellow">
+  <div class="flex justify-between text-[10px] text-slate-500 font-medium">
+    <span>1 өдөр</span>
+    <span>15 өдөр (50%)</span>
+  </div>
+</div>
+
+<!-- Info Badge -->
+<div class="flex items-start gap-2 text-[11px] leading-tight text-amber-400/90 bg-amber-500/10 border border-amber-500/20 px-3 py-2 rounded-xl mt-3">
+  <i class="fa-solid fa-circle-info text-xs mt-0.5 shrink-0"></i>
+  <span>Санхүүгийн эрсдэлээс хамгаалах үүднээс сард ажилласан хоногийн дээд тал нь 50% (15 өдөр)-д дүйцэх урьдчилгаа авах боломжтой.</span>
+</div>
 
         <!-- DEDUCTION BREAKDOWN -->
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 bg-darkBg/80 rounded-2xl border border-slate-800/80 text-xs">
