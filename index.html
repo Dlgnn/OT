@@ -172,50 +172,19 @@ tailwind.config = {
             </div>
           </div>
 
-         <!-- Video Card -->
-<div class="relative max-w-4xl mx-auto rounded-[28px] p-[1px] gradient-border shadow-glow-purple">
-  <!-- h-[360px]-ийн оронд aspect ratio ашиглавал видео таслагдаж дээшээ тулахгүй -->
-  <div class="relative rounded-[26px] overflow-hidden bg-cardBg group aspect-video sm:aspect-[16/9] flex items-center justify-center">
-    
-    <video 
-      src="https://v1.pinimg.com/videos/iht/720p/e3/88/ed/e388eddbfa3f721325fd7e01ef413859.mp4" 
-      autoplay 
-      muted 
-      loop 
-      playsinline
-      aria-hidden="true"
-      /* object-center-ийг object-top эсвэл object-contain болгож өөрчлөв */
-      class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-1000 ease-out">
-    </video>
-
-    <!-- Харанхуйлах градиент давхарга -->
-    <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/20 to-transparent pointer-events-none"></div>
-
-    <!-- Доод талын бичвэр & товчлуур байрлуулах хэсэг -->
-    <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 p-4 rounded-2xl bg-darkBg/60 backdrop-blur-md border border-white/10">
-      <div>
-        <span class="inline-block px-3 py-1 text-xs font-semibold text-emerald-400 bg-emerald-500/10 rounded-full mb-2 border border-emerald-500/20">
-          Шилжүүлэг шууд хийгдэнэ
-        </span>
-        <h3 class="text-white text-lg sm:text-xl font-bold">
-          Хэдхэн товшилтоор дансандаа аваарай
-        </h3>
-      </div>
-
-      <div class="flex gap-3">
-        <a href="#" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-medium flex items-center gap-2 border border-white/10 transition">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><!-- App Store Icon --></svg>
-          App Store
-        </a>
-        <a href="#" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-medium flex items-center gap-2 border border-white/10 transition">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><!-- Google Play Icon --></svg>
-          Google Play
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
+ <!-- Video Card -->
+          <div class="relative max-w-4xl mx-auto rounded-[28px] p-[1px] gradient-border shadow-glow-purple">
+            <div class="relative rounded-[26px] overflow-hidden bg-cardBg group h-[360px] sm:h-[440px]">
+              <video 
+                src="https://cdn.cosmos.so/656527ed-7f5c-4f69-b7b2-5aac8e42cd43.mp4" 
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                aria-hidden="true"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-1000 ease-out">
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/10 to-transparent"></div>
 
               <div class="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-left glass-card p-5 rounded-2xl border border-white/10">
                 <div class="space-y-1">
