@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-900:#171b19;
+    --paper-bg:#FAF7F0;
+    --card-white:#FFFFFF;
+    --brand-yellow:#FFC629;
+    --brand-deep:#E8A400;
+    --mint-600:#1B9C6E;
+    --mint-100:#E4F5EC;
+    --coral-600:#E84A2F;
+    --coral-100:#FCEAE5;
+    --amber-600:#D98A17;
+    --amber-100:#FCF1DD;
+    --gray-500:#8A8A93;
+    --gray-line:#ECE8DE;
+    --radius-card:20px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-bg);
+    font-family:'Manrope',sans-serif;
+    color:var(--ink-900);
+    padding:24px 12px 60px;
+  }
+  .wrap{max-width:420px;margin:0 auto;}
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:17px;
+    font-weight:700;
+    margin:0 0 4px;
+  }
+  .sub{
+    color:var(--gray-500);
+    font-size:13px;
+    margin:0 0 20px;
+    line-height:1.5;
+  }
+  .stack{display:flex;flex-direction:column;gap:12px;}
+
+  /* ===== Card ===== */
+  .lc-action{
+    background:var(--card-white);
+    border:1px solid var(--gray-line);
+    border-radius:var(--radius-card);
+    overflow:hidden;
+  }
+  .lc-action__header{
+    padding:14px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--ink-900);
+    color:#fff;
+  }
+  .lc-action__header.urgency-late{background:var(--coral-600);}
+  .lc-action__when.due-soon{
+    display:inline-block;
+    background:var(--brand-yellow);
+    color:var(--ink-900);
+    padding:3px 10px;
+    border-radius:999px;
+    font-weight:800;
+  }
+  .lc-action__label{
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    opacity:.75;
+  }
+  .lc-action__amount{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:19px;
+    margin-top:2px;
+  }
+  .lc-action__when{
+    font-size:12.5px;
+    font-weight:700;
+    text-align:right;
+  }
+  .lc-action__footer{
+    padding:11px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12.5px;
+    color:var(--gray-500);
+  }
+  .lc-action__name{
+    color:var(--ink-900);
+    font-weight:600;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Card-ын дээд хэсгийн өнгөөр тодорхойлогдоно</h1>
+  <p class="sub">"Юу хийх ёстой вэ" гэдгийг тодоор дээд хэсэгт, дэлгэрэнгүйг доод мөрөнд харуулна. Өнгө нь яаралтай байдлаас хамаарч солигдоно.</p>
+
+  <div class="stack">
+
+    <!-- normal -->
+    <div class="lc-action">
+      <div class="lc-action__header">
+        <div>
+          <div class="lc-action__label">Дараагийн төлөлт</div>
+          <div class="lc-action__amount">521,699₮</div>
+        </div>
+        <div class="lc-action__when">Өнөөдөр</div>
+      </div>
+      <div class="lc-action__footer">
+        <span class="lc-action__name">Бэлэн мөнгө</span>
+        <span>30 хоног · 4.4%</span>
+      </div>
+    </div>
+
+    <!-- normal -->
+    <div class="lc-action">
+      <div class="lc-action__header">
+        <div>
+          <div class="lc-action__label">Дараагийн төлөлт</div>
+          <div class="lc-action__amount">310,449₮</div>
+        </div>
+        <div class="lc-action__when">Бя, 8/22</div>
+      </div>
+      <div class="lc-action__footer">
+        <span class="lc-action__name">AB store</span>
+        <span>Бараа 12 сар · 2.9%</span>
+      </div>
+    </div>
+
+    <div class="lc-action">
+      <div class="lc-action__header">
+        <div>
+          <div class="lc-action__label">Дараагийн төлөлт</div>
+          <div class="lc-action__amount">32,007₮</div>
+        </div>
+        <div class="lc-action__when due-soon">7/5</div>
+      </div>
+      <div class="lc-action__footer">
+        <span class="lc-action__name">Rebook</span>
+        <span>Худалдан авалт 7 сар · 2.9%</span>
+      </div>
+    </div>
+
+    <!-- late -->
+    <div class="lc-action">
+      <div class="lc-action__header urgency-late">
+        <div>
+          <div class="lc-action__label">Хоцорсон төлөлт</div>
+          <div class="lc-action__amount">282,156₮</div>
+        </div>
+        <div class="lc-action__when">225 хоног</div>
+      </div>
+      <div class="lc-action__footer">
+        <span class="lc-action__name">Улсын их дэлгүүр</span>
+        <span>Худалдан авалт · 2.9%</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

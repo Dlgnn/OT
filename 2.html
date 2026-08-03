@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-900:#17171B;
+    --paper-bg:#FAF7F0;
+    --card-white:#FFFFFF;
+    --brand-yellow:#FFC629;
+    --mint-600:#1B9C6E;
+    --coral-600:#E84A2F;
+    --gray-500:#8A8A93;
+    --gray-line:#ECE8DE;
+    --radius-card-sm:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-bg);
+    font-family:'Manrope',sans-serif;
+    color:var(--ink-900);
+    padding:24px 12px 60px;
+  }
+  .wrap{max-width:420px;margin:0 auto;}
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:17px;
+    font-weight:700;
+    margin:0 0 4px;
+  }
+  .sub{
+    color:var(--gray-500);
+    font-size:13px;
+    margin:0 0 20px;
+    line-height:1.5;
+  }
+
+  /* ===== Group ===== */
+  .lc-group-header{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:16px 0 8px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--gray-500);
+  }
+  .lc-group-header:first-child{padding-top:0;}
+  .lc-group-dot{
+    width:7px;height:7px;border-radius:50%;
+  }
+  .lc-group-dot.late{background:var(--coral-600);}
+  .lc-group-dot.warn{background:var(--brand-yellow);}
+  .lc-group-dot.ok{background:var(--mint-600);}
+
+  /* ===== Card ===== */
+  .lc-compact{
+    background:var(--card-white);
+    border:1px solid var(--gray-line);
+    border-left:3px solid var(--gray-line);
+    border-radius:var(--radius-card-sm);
+    padding:12px 14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+  }
+  .lc-compact.late{border-left-color:var(--coral-600);}
+  .lc-compact.warn{border-left-color:var(--gray-line);}
+  .lc-compact.ok{border-left-color:var(--mint-600);}
+
+  .lc-compact__name{font-weight:700;font-size:13.5px;}
+  .lc-compact__terms{font-size:11.5px;color:var(--gray-500);margin-top:1px;}
+  .lc-compact__right{text-align:right;}
+  .lc-compact__amount{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:14px;
+  }
+  .lc-compact__due{font-size:11px;font-weight:700;margin-top:2px;}
+  .lc-compact__due.late{color:var(--coral-600);}
+  .lc-compact__due.ok{color:var(--mint-600);}
+  .lc-compact__due.warn{
+    display:inline-block;
+    background:var(--brand-yellow);
+    color:var(--ink-900);
+    padding:2px 9px;
+    border-radius:999px;
+    font-weight:800;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Зүүн хэсгийн ирмэгээр тодорхойлогдоно</h1>
+  <p class="sub">Зээлүүдийг "Хоцорсон / Удахгүй / Хугацаандаа" гэсэн 3 бүлэгт ялгаж, хугацаа дөхсөн нь дээр гарна. Зүүн ирмэгийн өнгөт зураас нь байдлыг харуулна.</p>
+
+  <div class="lc-group-header"><span class="lc-group-dot late"></span>Хоцорсон · 3</div>
+  <div class="lc-compact late">
+    <div><div class="lc-compact__name">Улсын их дэлгүүр</div><div class="lc-compact__terms">Худалдан авалт 6 сар</div></div>
+    <div class="lc-compact__right"><div class="lc-compact__amount">282,156₮</div><div class="lc-compact__due late">225 хоног</div></div>
+  </div>
+  <div class="lc-compact late">
+    <div><div class="lc-compact__name">Улсын их дэлгүүр</div><div class="lc-compact__terms">Лояалти зээл 6 сар</div></div>
+    <div class="lc-compact__right"><div class="lc-compact__amount">627,926₮</div><div class="lc-compact__due late">225 хоног</div></div>
+  </div>
+  <div class="lc-compact late">
+    <div><div class="lc-compact__name">Номин eshop</div><div class="lc-compact__terms">Худалдан авалт 6 сар</div></div>
+    <div class="lc-compact__right"><div class="lc-compact__amount">19,913₮</div><div class="lc-compact__due late">98 хоног</div></div>
+  </div>
+
+  <div class="lc-group-header"><span class="lc-group-dot warn"></span>Удахгүй · 1</div>
+  <div class="lc-compact warn">
+    <div><div class="lc-compact__name">Rebook</div><div class="lc-compact__terms">Худалдан авалт 7 сар</div></div>
+    <div class="lc-compact__right"><div class="lc-compact__amount">32,007₮</div><div class="lc-compact__due warn">7/5</div></div>
+  </div>
+
+  <div class="lc-group-header"><span class="lc-group-dot ok"></span>Хугацаандаа · 2</div>
+  <div class="lc-compact ok">
+    <div><div class="lc-compact__name">Бэлэн мөнгө</div><div class="lc-compact__terms">30 хоног · 4.4%</div></div>
+    <div class="lc-compact__right"><div class="lc-compact__amount">521,699₮</div><div class="lc-compact__due ok">Өнөөдөр</div></div>
+  </div>
+  <div class="lc-compact ok">
+    <div><div class="lc-compact__name">AB store</div><div class="lc-compact__terms">Бараа 12 сар</div></div>
+    <div class="lc-compact__right"><div class="lc-compact__amount">310,449₮</div><div class="lc-compact__due ok">8/22</div></div>
+  </div>
+
+</div>
+</body>
+</html>
