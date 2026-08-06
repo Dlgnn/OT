@@ -15,7 +15,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OmniFlow — Цалингаа урьдчилан авах уян хатан шийдэл</title>
-  <meta name="description" content="OmniFlow — ажилласан хоногийнхоо цалинг сарын эцэс хүртэл хүлээлгүйгээр, хүссэн үедээ, хүүгүй, шимтгэлгүй авах Earned Wage Access үйлчилгээ.[cite: 4]">
+  <meta name="description" content="OmniFlow — ажилласан хоногийнхоо цалинг сарын эцэс хүртэл хүлээлгүйгээр, хүссэн үедээ, хүүгүй, шимтгэлгүй авах Earned Wage Access үйлчилгээ.">
   <meta name="theme-color" content="#0B0F17">
 
   <!-- Open Graph -->
@@ -212,6 +212,9 @@
     :root[data-theme="light"] .text-on-media {
       color: #FFFFFF !important;
     }
+    :root[data-theme="light"] .text-omniYellow.media-accent {
+      color: #FACC15 !important;
+    }
     :root[data-theme="light"] ::selection {
       background-color: #FACC15;
       color: #0F172A;
@@ -300,11 +303,11 @@
       <div class="flex items-center space-x-3 sm:space-x-4">
         <!-- Таб солих цэс -->
         <nav class="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm font-semibold bg-slate-900/80 p-1.5 rounded-full border border-slate-800" role="tablist" aria-label="Үндсэн цэс">
-          <button id="nav-hero" onclick="switchTab('hero')" role="tab" aria-selected="true" aria-controls="tab-hero" class="nav-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition duration-300">Нүүр</button>
-          <button id="nav-for-employees" onclick="switchTab('for-employees')" role="tab" aria-selected="false" aria-controls="tab-for-employees" class="nav-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition duration-300">Ажилтанд</button>
-          <button id="nav-for-companies" onclick="switchTab('for-companies')" role="tab" aria-selected="false" aria-controls="tab-for-companies" class="nav-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition duration-300">Байгууллагад</button>
+          <button id="nav-hero" onclick="switchTab('hero')" role="tab" aria-selected="true" aria-controls="tab-hero" class="nav-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition duration-300 text-omniYellow bg-purple-950/60 border border-purple-500/30">Нүүр</button>
+          <button id="nav-for-employees" onclick="switchTab('for-employees')" role="tab" aria-selected="false" aria-controls="tab-for-employees" class="nav-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition duration-300 text-slate-400 hover:text-white">Ажилтанд</button>
+          <button id="nav-for-companies" onclick="switchTab('for-companies')" role="tab" aria-selected="false" aria-controls="tab-for-companies" class="nav-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition duration-300 text-slate-400 hover:text-white">Байгууллагад</button>
         </nav>
-        <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Dark/LightMode" class="theme-toggle-btn bg-slate-900/80 border border-slate-800 text-omniYellow hover:border-omniPurple/50 ml-2 sm:ml-4">
+        <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Гэрэлтүүлгийн горим солих" class="theme-toggle-btn bg-slate-900/80 border border-slate-800 text-omniYellow hover:border-omniPurple/50 ml-2 sm:ml-4">
           <i class="fa-solid fa-sun icon-sun text-sm"></i>
           <i class="fa-solid fa-moon icon-moon text-sm"></i>
         </button>
@@ -349,7 +352,7 @@
                 <div class="relative max-w-4xl mx-auto rounded-[28px] p-[1px] gradient-border shadow-glow-purple">
                     <div class="relative rounded-[26px] overflow-hidden group h-[360px] sm:h-[440px] flex items-center justify-center p-8 transition-colors duration-300 bg-slate-900/80 border border-slate-800">  
                         <img src="https://play-lh.googleusercontent.com/_3Th0L3a7GUEsBQBqBAPFbKXOnri7Qx-XSA7EUA8jeKmuLtxi5rscRdsafvt9ZyzvAIq4I8s4ef-mEo5ADe1jA" 
-                             alt="OmniWay Logo" 
+                             alt="OmniFlow лого" 
                              class="w-36 h-36 sm:w-48 sm:h-48 object-contain group-hover:scale-105 transition duration-500 drop-shadow-2xl brightness-125 contrast-125">
                     </div>
          
@@ -438,7 +441,7 @@
                         </div>
                         <div class="flex items-start gap-2.5 text-xs text-slate-300">
                             <span class="text-omniPurple text-base">•</span>
-                            <span>Байгууллага, ажилтны аль أлинд нь ил тод, хүүгүй, шимтгэлгүй үйлчилгээ</span>
+                            <span>Байгууллага, ажилтны аль алинд нь ил тод, хүүгүй, шимтгэлгүй үйлчилгээ</span>
                         </div>
                     </div>
                 </div>
@@ -614,14 +617,13 @@
             </div>
 
 <!-- EMPLOYER INVITATION B2C->B2B CARD -->
-        <div class="max-w-3xl mx-auto p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 transition-colors duration-300 border border-slate-200 dark:border-slate-800"
-     style="background-color: var(--card-bg, ); border-color: var(--card-border, );">
+        <div class="max-w-3xl mx-auto p-6 rounded-2xl bg-cardBg border border-purple-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 transition-colors duration-300">
        <div class="space-y-1 text-center md:text-left">
-        <h4 class="font-bold text-sm text-slate-900 dark:text-white" style="color: var(--text-main, );">
-            Танай ажил олгогч OmniFlow-d холбогдоогүй байна уу?
+        <h4 class="font-bold text-sm text-white">
+            Танай ажил олгогч OmniFlow-д холбогдоогүй байна уу?
         </h4>
-        <p class="text-xs text-slate-600 dark:text-slate-400" style="color: var(--text-muted, );">
-            Байгууллагынхаа HR эсвэл удирдлагадаа хүсэлт илгээж, цалингийн урьдчилгаа авах боломжийг бүрдүүл дээ.
+        <p class="text-xs text-slate-400">
+            Байгууллагынхаа HR эсвэл удирдлагадаа хүсэлт илгээж, цалингийн урьдчилгаа авах боломжийг бүрдүүлээрэй.
         </p>
         </div>
         <button onclick="switchTab('for-companies')" class="whitespace-nowrap bg-omniYellow hover:bg-amber-400 text-slate-950 font-black text-xs px-5 py-3 rounded-xl transition-all shadow-md shrink-0">
@@ -848,8 +850,8 @@
                   <img src="https://i.pinimg.com/1200x/c9/47/e4/c947e4e5e28073978285e3351949970d.jpg" alt="B2B харилцаа" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
                   <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/40 to-transparent"></div>
                   <div class="absolute bottom-6 left-6 right-6 space-y-1">
-                    <span class="text-[11px] font-bold text-omniYellow uppercase tracking-wider">B2B Хамтын ажиллагаа</span>
-                    <h3 class="text-lg font-extrabold text-white">Байгууллагынхаа сэтгэл ханамжийг нэмэгдүүл</h3>
+                    <span class="text-[11px] font-bold text-omniYellow media-accent uppercase tracking-wider">B2B Хамтын ажиллагаа</span>
+                    <h3 class="text-lg font-extrabold text-white text-on-media">Байгууллагынхаа сэтгэл ханамжийг нэмэгдүүл</h3>
                   </div>
                 </div>
 
@@ -1177,13 +1179,13 @@
       if (!targetTab || activeTab === targetTab) return;
 
       document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.className = "nav-btn px-4 py-2 rounded-full text-slate-400 hover:text-white transition duration-300";
+        btn.className = "nav-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition duration-300 text-slate-400 hover:text-white";
         btn.setAttribute('aria-selected', 'false');
       });
       
       const activeNavBtn = document.getElementById('nav-' + tabName);
       if (activeNavBtn) {
-        activeNavBtn.className = "nav-btn px-4 py-2 rounded-full text-omniYellow bg-purple-950/60 border border-purple-500/30 transition duration-300";
+        activeNavBtn.className = "nav-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition duration-300 text-omniYellow bg-purple-950/60 border border-purple-500/30";
         activeNavBtn.setAttribute('aria-selected', 'true');
       }
 
@@ -1356,10 +1358,15 @@
     function appendChatMessage(text, isUser = false) {
       const chatContainer = document.getElementById('chat-messages');
       const msgDiv = document.createElement('div');
+      msgDiv.className = "p-3 rounded-2xl leading-relaxed max-w-[85%] transition-colors duration-300";
       if (isUser) {
-        msgDiv.className = "bg-purple-600 text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[85%] leading-relaxed";
+        msgDiv.classList.add('rounded-tr-none', 'ml-auto');
+        msgDiv.style.backgroundColor = '#7C3AED';
+        msgDiv.style.color = '#FFFFFF';
       } else {
-        msgDiv.className = "bg-slate-800/80 p-3 rounded-2xl rounded-tl-none text-slate-200 max-w-[85%] leading-relaxed";
+        msgDiv.classList.add('rounded-tl-none');
+        msgDiv.style.backgroundColor = 'var(--chat-msg-bg, #f1f5f9)';
+        msgDiv.style.color = 'var(--chat-text-main, #0f172a)';
       }
       msgDiv.textContent = text;
       chatContainer.appendChild(msgDiv);
