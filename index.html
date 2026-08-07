@@ -125,11 +125,80 @@
       overflow: hidden;
     }
 
+    /* ===================== SOFT FADE DIVIDERS ===================== */
+    /* Replaces hard full-width border lines with lines that taper to
+       transparent at both edges, so sections blend into each other
+       instead of looking like separate boxes stacked on top of the
+       gradient hero. */
+    :root {
+      --divider-line: rgba(148, 163, 184, 0.28);
+    }
+    :root[data-theme="light"] {
+      --divider-line: rgba(100, 116, 139, 0.22);
+    }
+    .fade-divider-top {
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(to right, transparent, var(--divider-line) 20%, var(--divider-line) 80%, transparent) 1;
+    }
+    .fade-divider-bottom {
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(to right, transparent, var(--divider-line) 20%, var(--divider-line) 80%, transparent) 1;
+    }
+    .fade-divider-y {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(to right, transparent, var(--divider-line) 20%, var(--divider-line) 80%, transparent) 1;
+    }
+
+    /* ===================== HERO WAVE BACKGROUND ===================== */
+    #hero-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Dark mode (default): black -> purple wave */
+    #hero-wrap {
+      background: linear-gradient(180deg, #4C1D95 0%, #3B1670 24%, #221049 48%, #150B29 72%, #0B0F17 100%);
+      border-bottom-left-radius: 50% 10%;
+      border-bottom-right-radius: 50% 10%;
+      padding-bottom: 4.5rem;
+    }
+    :root[data-theme="dark"] #hero-wrap {
+      background: linear-gradient(180deg, #4C1D95 0%, #3B1670 24%, #221049 48%, #150B29 72%, #0B0F17 100%);
+    }
+
+    /* Light mode: orange -> white wave (OmniWay-style) */
+    :root[data-theme="light"] #hero-wrap {
+      background: linear-gradient(180deg, #FBBF24 0%, #F59E0B 24%, #FCD34D 55%, #FEF3C7 82%, #FFFFFF 100%) !important;
+      border-bottom-left-radius: 50% 10% !important;
+      border-bottom-right-radius: 50% 10% !important;
+      padding-bottom: 4.5rem !important;
+    }
+    .hero-glow {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(circle, rgba(139,92,246,0.14) 0%, rgba(250,204,21,0.08) 45%, transparent 75%);
+      filter: blur(90px);
+      pointer-events: none;
+    }
+    .hero-card-fade {
+      background: linear-gradient(to top, rgba(11,15,23,0.85) 0%, rgba(11,15,23,0.15) 55%, transparent 100%);
+    }
+    :root[data-theme="light"] .hero-card-fade {
+      background: linear-gradient(to top, rgba(15,23,42,0.45) 0%, rgba(15,23,42,0.06) 55%, transparent 100%);
+    }
+
     /* ===================== LIGHT MODE ===================== */
     :root[data-theme="light"] body {
-      background-color: #F4F5F9;
-      color: #0F172A;
+      background-color: #ffffff !important;
+      background-image: none !important;
+      color: #0F172A !important;
     }
+
     :root[data-theme="light"] .bg-darkBg,
     :root[data-theme="light"] .bg-darkBg\/80,
     :root[data-theme="light"] .bg-darkBg\/90 {
@@ -288,7 +357,7 @@
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-omniYellow focus:text-slate-950 focus:px-4 focus:py-2 focus:rounded-xl focus:font-bold">Үндсэн контент руу шилжих</a>
 
   <!-- 1. HEADER -->
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-darkBg/80 border-b border-slate-800/80 transition-colors duration-300">
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-darkBg/80 fade-divider-bottom transition-colors duration-300">
     <div class="max-w-7xl mx-auto h-20 flex items-center justify-between px-4 sm:px-8">
       <!-- Logo -->
       <a href="javascript:void(0)" onclick="switchTab('hero')" class="flex items-center space-x-3 group">
@@ -320,9 +389,10 @@
     
     <!-- ==================== TAB 1: НҮҮР (HERO) ==================== -->
     <div id="tab-hero" class="tab-pane active show" role="tabpanel" aria-labelledby="nav-hero">
-        
+
+      <div id="hero-wrap">
         <section class="relative overflow-hidden pt-12 pb-20 max-w-5xl mx-auto px-6 text-center">
-            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-purple-600/15 to-omniYellow/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="hero-glow"></div>
 
             <div class="relative z-10 space-y-8">
                 <div class="space-y-5 max-w-3xl mx-auto">
@@ -356,7 +426,7 @@
                              class="w-36 h-36 sm:w-48 sm:h-48 object-contain group-hover:scale-105 transition duration-500 drop-shadow-2xl brightness-125 contrast-125">
                     </div>
          
-                    <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/10 to-transparent pointer-events-none"></div>
+                    <div class="absolute inset-0 hero-card-fade pointer-events-none"></div>
 
                     <div class="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-left glass-card p-5 rounded-2xl border border-white/10 z-20">
                         <div class="space-y-1">
@@ -381,8 +451,9 @@
                 </div>
             </div>
         </section>
+      </div>
 
-        <section class="py-16 bg-slate-900/30 border-y border-slate-800/80">
+        <section class="py-16 bg-slate-900/30 fade-divider-bottom">
             <div class="max-w-6xl mx-auto px-6 space-y-12">
                 <div class="text-center space-y-3">
                     <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Тэргүүлэгч байгууллагуудтай хамтран ажиллаж байна</p>
@@ -923,7 +994,7 @@
   </main>
 
   <!-- COMMON DOWNLOAD SECTION -->
-  <section id="download-app-sec" class="py-16 bg-slate-900/40 border-t border-slate-800/80">
+  <section id="download-app-sec" class="py-16 bg-slate-900/40 fade-divider-top">
     <div class="max-w-5xl mx-auto px-6 space-y-10">
       <div class="text-center space-y-1">
         <h2 class="text-2xl font-black text-white">Аппаа татаж аваарай</h2>
@@ -1096,8 +1167,8 @@
   </style>
 
   <!-- FOOTER -->
-  <footer class="bg-[#070A0F] text-xs text-slate-400 border-t border-slate-800/80 pt-10 pb-6">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800/60">
+  <footer class="bg-[#070A0F] text-xs text-slate-400 fade-divider-top pt-10 pb-6">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 fade-divider-bottom">
       <div class="space-y-3">
         <h4 class="font-black text-white text-base">Омни Флов ХХК</h4>
         <p class="text-slate-400 text-xs leading-relaxed">
